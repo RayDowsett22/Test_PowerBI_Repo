@@ -1,0 +1,49 @@
+table DimEntityType
+	lineageTag: 3046c3b6-1789-4fcf-8bdc-0db41f2974eb
+
+	column EntityTypeID
+		dataType: int64
+		formatString: 0
+		lineageTag: c6fbadcb-3b9b-4bfb-9e86-453a79525215
+		summarizeBy: none
+		sourceColumn: EntityTypeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column EntityTypeDescription
+		dataType: string
+		lineageTag: 83b0b208-3dea-494f-8fb0-9c68a9e31c6d
+		summarizeBy: none
+		sourceColumn: EntityTypeDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column EntityTypeCode
+		dataType: string
+		lineageTag: a716bd21-b735-4e4f-92aa-a4c821967297
+		summarizeBy: none
+		sourceColumn: EntityTypeCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReportedByCategory = SWITCH(TRUE(),DimEntityType[EntityTypeDescription]="Sub-Contractor","Sub-Contractor",DimEntityType[EntityTypeDescription]="Agency","Agency",DimEntityType[EntityTypeDescription]="Plant","Plant","Other")
+		displayFolder: 2. Calculated Columns
+		lineageTag: 324db4c5-1749-494d-bdcb-2a272671c8f4
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimEntityType = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				    Source = Sql.Database(Instances, "JNBDW"),
+				    dbo_DimEntityType = Source{[Schema="dbo",Item="DimEntityType"]}[Data]
+				in
+				    dbo_DimEntityType
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,308 @@
+table FactEventActionResponse
+	lineageTag: 679dcd11-f875-4fb9-86fb-ead668beb3c3
+
+	measure 'Number of Event Actions' =
+			
+			CALCULATE(IF(COUNT(FactEventActionResponse[RESPONSE_ID])=BLANK(), 0, COUNT(FactEventActionResponse[RESPONSE_ID])),
+			FILTER(FactEventActionResponse,FactEventActionResponse[REQUIRES_ACTION] ="Y")
+			)
+		formatString: #,0
+		displayFolder: 1. Measures
+		lineageTag: 37d7f1d8-d910-4bf4-b106-ff2f6a1a6272
+
+	measure 'Number of Event Actions + 0' = [Number of Event Actions] + 0
+		formatString: #,0
+		displayFolder: 1. Measures
+		lineageTag: 2bad355a-1e94-4024-92f8-67f8f77f4561
+
+	measure 'Number of Site Support Reponses' = DISTINCTCOUNT(FactEventActionResponse[Response_ID])
+		formatString: #,0
+		displayFolder: 1. Measures
+		lineageTag: b7cb6f46-3ca6-42ef-9e60-466adc083580
+
+	measure 'Total Number of Site Support Reponses' = CALCULATE([Number of Site Support Reponses], FILTER(ALL(RAGOrder),RAGOrder[RAG]<>BLANK()))
+		formatString: 0
+		displayFolder: 1. Measures
+		lineageTag: 552ff006-9bfd-4c58-b27d-5ef692248f54
+
+	measure '% of Site Support Reponses' = DIVIDE([Number of Site Support Reponses],[Total Number of Site Support Reponses])
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 1. Measures
+		lineageTag: df84df7d-9e7e-4087-a2a5-21954fab2a1b
+
+	measure 'Number of Actions Closed' = ```
+			
+			/* 
+			Get the number of action responses closed in SLA by the action open date using the inactive relationahip.
+			*/
+			CALCULATE(
+			DISTINCTCOUNT(FactEventActionResponse[Response_ID]),
+			USERELATIONSHIP(FactEventActionResponse[DateOpenedID],'DimDate'[DateID]))
+			```
+		formatString: #,0
+		displayFolder: 1. Measures
+		lineageTag: 0c5e2b7e-2c89-47fa-9db9-f591b604a917
+
+	measure 'Number of Actions Closed - SLA' = ```
+			
+			/* 
+			Get the number of actions closed in SLA by the action open date using the inactive relationahip.
+			*/
+			CALCULATE(
+			SUM(FactEventActionResponse[IsActionClosedInSLA]),
+			USERELATIONSHIP(FactEventActionResponse[DateOpenedID],'DimDate'[DateID]))
+			```
+		formatString: #,0
+		displayFolder: 1. Measures
+		lineageTag: 549a8578-82ad-4545-9d33-0ac83c232ba0
+
+	column EventActionID
+		dataType: int64
+		formatString: 0
+		lineageTag: 9df7e447-4fb2-4981-ad5d-24ad4cd9eb8d
+		summarizeBy: count
+		sourceColumn: EventActionID
+
+		annotation SummarizationSetBy = Automatic
+
+	column EventID
+		dataType: int64
+		formatString: 0
+		lineageTag: 74314653-da27-494b-b16f-1fce23497ec3
+		summarizeBy: none
+		sourceColumn: EventID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Response_ID
+		dataType: double
+		formatString: 0
+		lineageTag: a2bcd062-18d1-4016-b426-c83c8fb4e72f
+		summarizeBy: none
+		sourceColumn: Response_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column Question
+		dataType: string
+		lineageTag: e017de15-51ce-45d6-9faa-17457d3eef22
+		summarizeBy: none
+		sourceColumn: Question
+
+		annotation SummarizationSetBy = Automatic
+
+	column Answer
+		dataType: string
+		lineageTag: 8ed2fdce-aebd-4eb2-8b75-25f7bbd89009
+		summarizeBy: none
+		sourceColumn: Answer
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnswerAction
+		dataType: string
+		lineageTag: d6ba8d00-d73a-4bf2-8558-b668fc510364
+		summarizeBy: none
+		sourceColumn: AnswerAction
+
+		annotation SummarizationSetBy = Automatic
+
+	column SEQ_NO
+		dataType: double
+		lineageTag: 0002e031-e5d2-4164-8267-764d0752f749
+		summarizeBy: sum
+		sourceColumn: SEQ_NO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DOC_GUID
+		dataType: double
+		lineageTag: 8caad0ce-e694-4880-a0f8-0719402828ca
+		summarizeBy: count
+		sourceColumn: DOC_GUID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Requires_Action
+		dataType: string
+		lineageTag: 95d1cc08-8261-474b-a194-ac911febe481
+		summarizeBy: none
+		sourceColumn: Requires_Action
+
+		annotation SummarizationSetBy = Automatic
+
+	column CurrentOwner
+		dataType: string
+		lineageTag: 9be4b087-54f1-4727-b7f8-a7b7558efaae
+		summarizeBy: none
+		sourceColumn: CurrentOwner
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateOpened
+		dataType: dateTime
+		formatString: dd/mm/yyyy hh:nn:ss
+		lineageTag: 17e295f5-8d11-4d5a-be00-efaa83e85380
+		summarizeBy: none
+		sourceColumn: DateOpened
+
+		variation Variation
+			isDefault
+			relationship: 6dd10a78-83ba-4682-ab69-0319b525f980
+			defaultHierarchy: LocalDateTable_bc1e6893-cf1f-49da-a722-088c72eb8959.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column DateOpenedID
+		dataType: int64
+		formatString: 0
+		lineageTag: fecc1f20-5e98-4ead-a326-f0134aa33ea4
+		summarizeBy: count
+		sourceColumn: DateOpenedID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateClosed
+		dataType: dateTime
+		formatString: dd/mm/yyyy hh:nn:ss
+		lineageTag: 2ea9af44-f22c-4e46-a72d-d4563358d3f9
+		summarizeBy: none
+		sourceColumn: DateClosed
+
+		variation Variation
+			isDefault
+			relationship: d9c4d986-bc63-49c3-b666-121139bf0cde
+			defaultHierarchy: LocalDateTable_1c67fc7a-49f1-43d5-ba8d-c1656241d087.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column DateClosedID
+		dataType: int64
+		formatString: 0
+		lineageTag: 5d16fe69-f276-4c44-904a-49883ff2e8a7
+		summarizeBy: count
+		sourceColumn: DateClosedID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Duration
+		dataType: int64
+		formatString: 0
+		lineageTag: 60c2a1ef-4db9-4e97-b552-89ecc6918126
+		summarizeBy: sum
+		sourceColumn: Duration
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: e655782f-f4e9-41ff-85d3-c8fbbbad26d8
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsActionClosedinSLA
+		dataType: int64
+		formatString: 0
+		lineageTag: d29add7a-ee53-42c8-a665-e9b822da85ee
+		summarizeBy: sum
+		sourceColumn: IsActionClosedinSLA
+
+		annotation SummarizationSetBy = Automatic
+
+	column InsertAuditID
+		dataType: int64
+		formatString: 0
+		lineageTag: c122ab26-0aaa-4a99-9551-c5784d7326d9
+		summarizeBy: count
+		sourceColumn: InsertAuditID
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpdateAuditID
+		dataType: int64
+		formatString: 0
+		lineageTag: 108cf9cd-c165-4517-89f4-fee201bd7e48
+		summarizeBy: count
+		sourceColumn: UpdateAuditID
+
+		annotation SummarizationSetBy = Automatic
+
+	column LogDeleted
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 6576abab-47c3-4373-a277-ff2e0257c784
+		summarizeBy: none
+		sourceColumn: LogDeleted
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO2Event
+		dataType: int64
+		formatString: 0
+		lineageTag: 6b497287-b445-4cab-ab5b-6ab8fbecdda0
+		summarizeBy: sum
+		sourceColumn: CO2Event
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO2AddedSaved
+		dataType: int64
+		formatString: 0
+		lineageTag: 00aa9b56-6a76-4a16-88c6-fed64580cb3b
+		summarizeBy: sum
+		sourceColumn: CO2AddedSaved
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO2_0_1
+		dataType: int64
+		formatString: 0
+		lineageTag: 6b3bfab4-a98e-4acc-b3d8-b47f94e91b56
+		summarizeBy: sum
+		sourceColumn: CO2_0_1
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO2_1_10
+		dataType: int64
+		formatString: 0
+		lineageTag: 24dec44f-24e2-4c81-94d2-45baad824254
+		summarizeBy: sum
+		sourceColumn: CO2_1_10
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO2_10
+		dataType: int64
+		formatString: 0
+		lineageTag: 8a94a57b-764d-4928-bb1b-68a7c076e578
+		summarizeBy: sum
+		sourceColumn: CO2_10
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactEventActionResponse = m
+		mode: import
+		queryGroup: Facts
+		source =
+				let
+				    Source = Sql.Database(Instances, "JNBDW", [Query="-- Retrieve event action responses and identify carbon-related events and values#(lf)SELECT EAR.[EventActionID]#(lf)      ,EAR.[EventID]#(lf)      ,EAR.[Response_ID]#(lf)      ,EAR.[Question]#(lf)      ,EAR.[Answer]#(lf)      ,EAR.[AnswerAction]#(lf)      ,EAR.[SEQ_NO]#(lf)      ,EAR.[DOC_GUID]#(lf)      ,EAR.[Requires_Action]#(lf)      ,EAR.[CurrentOwner]#(lf)      ,EAR.[DateOpened]#(lf)      ,EAR.[DateOpenedID]#(lf)      ,EAR.[DateClosed]#(lf)      ,EAR.[DateClosedID]#(lf)      ,EAR.[Duration]#(lf)      ,EAR.[Status]#(lf)      ,EAR.[IsActionClosedinSLA]#(lf)      ,EAR.[InsertAuditID]#(lf)      ,EAR.[UpdateAuditID]#(lf)      ,EAR.[LogDeleted]#(lf)      -- Flag and categorise CO2-related responses#(lf)      ,CASE WHEN EAR.[Question] = 'Tonnes CO2' THEN 1#(lf)#(tab)#(tab)#(tab)      ELSE 0 END [CO2Event]#(lf)#(tab)   ,CASE WHEN EAR.[Question] = 'Carbon Impact' AND EAR.[Answer] = 'Yes' THEN 1#(lf)#(tab)#(tab)#(tab)#(tab)   WHEN EAR.[Question] = 'Carbon Impact' AND EAR.[Answer] = 'No' THEN -1#(lf)#(tab)#(tab)#(tab)#(tab)    ELSE 0 END CO2AddedSaved#(lf)#(tab)   ,CASE WHEN EAR.[Answer] = '0-1 Tonnes of CO2e' THEN 1#(lf)#(tab)#(tab)#(tab)       ELSE 0 END [CO2_0_1]#(lf)#(tab)   ,CASE WHEN EAR.[Answer] = '1-10 Tonnes of CO2e' THEN 1#(lf)#(tab)#(tab)#(tab)       ELSE 0 END [CO2_1_10]#(lf)#(tab)   ,CASE WHEN EAR.[Answer] = '>10 Tonnes of CO2e' THEN 1#(lf)#(tab)#(tab)#(tab)       ELSE 0 END [CO2_10]#(lf)  FROM [JNBDW].[dbo].[FactEventActionResponse] EAR INNER JOIN#(lf)              (SELECT ER.[EventID]#(lf)               FROM [JNBDW].[dbo].[FactEventRegister] ER INNER JOIN#(lf)                            [JNBDW].[dbo].[DimDate] D ON D.[DateID] = ER.[Datekey] INNER JOIN#(lf)                            [JNBDW].[dbo].[DimEventType] ET ON ET.[EventTypeID] = ER.[EventTypeID]#(lf)              -- Include non-deleted events from the current and previous 36 months, excluding QES New Starter#(lf)              WHERE (ER.[LogDeleted] = 0 OR ER.[LogDeleted] IS NULL) AND ET.[EventTypeDescription] <> 'QES New Starter' AND D.[MonthOffset] BETWEEN -36 AND 0) E ON E.[EventID] = EAR.[EventID]#(lf)WHERE EAR.[LogDeleted] = 0 OR EAR.[LogDeleted] IS NULL"])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

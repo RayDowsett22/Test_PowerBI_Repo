@@ -1,0 +1,178 @@
+table HoursHelp
+	lineageTag: 3d01c1e3-699a-447e-994b-fa85f5f3320e
+
+	column 'Activity Category'
+		dataType: string
+		lineageTag: d38e6a96-e3cc-47e6-85e4-e0b7279d3ed4
+		summarizeBy: none
+		sourceColumn: Activity Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Activity Type Code'
+		dataType: string
+		lineageTag: ef71df12-4c1b-4105-aab4-c886655171dd
+		summarizeBy: none
+		sourceColumn: Activity Type Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Activity Type Description'
+		dataType: string
+		lineageTag: 430ee594-e7e5-4194-9093-b56e9655818e
+		summarizeBy: none
+		sourceColumn: Activity Type Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Activity Input'
+		dataType: string
+		lineageTag: a6438f1c-3573-48ee-9ef1-7e1b9f2c3bbe
+		summarizeBy: none
+		sourceColumn: Activity Input
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Activity Description'
+		dataType: string
+		lineageTag: dec84e55-da49-45a2-8d32-97dff59d6e12
+		summarizeBy: none
+		sourceColumn: Activity Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Raw Timesheet'
+		dataType: double
+		lineageTag: 4f36acc9-065c-4b95-8c42-8ea62a518021
+		summarizeBy: sum
+		sourceColumn: Raw Timesheet
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Processed Attendance'
+		dataType: double
+		lineageTag: 04366eff-f928-43e5-8859-cb82fc0886f0
+		summarizeBy: sum
+		sourceColumn: Processed Attendance
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Payroll Flag'
+		dataType: string
+		lineageTag: 0aad8b69-b504-4e9d-9481-64212b215f25
+		summarizeBy: none
+		sourceColumn: Payroll Flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Timesheet Flag'
+		dataType: string
+		lineageTag: c9dfb087-2cfa-44b4-9ca3-de859d070bbd
+		summarizeBy: none
+		sourceColumn: Timesheet Flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Payroll All'
+		dataType: string
+		lineageTag: fdab2910-7541-4978-a03b-7eea3a2f60d6
+		summarizeBy: none
+		sourceColumn: Payroll All
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Timesheet All'
+		dataType: string
+		lineageTag: 7cc46d39-47e0-4139-bcd5-3c7281f7fb8a
+		summarizeBy: none
+		sourceColumn: Timesheet All
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Subsistance & Lodge'
+		dataType: double
+		lineageTag: 2907da16-b793-4662-9cce-b1017e165b4d
+		summarizeBy: sum
+		sourceColumn: Subsistance & Lodge
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Lodge
+		dataType: double
+		lineageTag: 8b9c18f6-289e-4992-be32-7e02765eeecd
+		summarizeBy: sum
+		sourceColumn: Lodge
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Processed Attendance Normal Hours'
+		dataType: double
+		lineageTag: f6ea735f-012c-4044-a553-708889cbf068
+		summarizeBy: sum
+		sourceColumn: Processed Attendance Normal Hours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Timesheet Exceptions'
+		dataType: double
+		lineageTag: 9770e93d-5413-4a6f-a118-4619ff2ff373
+		summarizeBy: sum
+		sourceColumn: Timesheet Exceptions
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'People Rate Comparrison'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5894631c-84ce-4c54-8285-9ea48bc86691
+		summarizeBy: sum
+		sourceColumn: People Rate Comparrison
+
+		annotation SummarizationSetBy = Automatic
+
+	column Contract
+		dataType: int64
+		formatString: 0
+		lineageTag: 92c1dc98-f8b2-4f00-ace4-313b35f99ae0
+		summarizeBy: sum
+		sourceColumn: Contract
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProjectStaffLabourCosts
+		dataType: int64
+		formatString: 0
+		lineageTag: 5dfb2228-d7e2-434c-94a1-4558a6053ddd
+		summarizeBy: sum
+		sourceColumn: ProjectStaffLabourCosts
+
+		annotation SummarizationSetBy = Automatic
+
+	partition HoursHelp = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				    Source = Sql.Database(Instances, "JNBDW"),
+				    dbo_vw_HoursHelp = Source{[Schema="dbo",Item="vw_HoursHelp"]}[Data],
+				    #"Replaced Value" = Table.ReplaceValue(dbo_vw_HoursHelp,true,1,Replacer.ReplaceValue,{"Raw Timesheet", "Processed Attendance", "Payroll Flag", "Timesheet Flag", "Payroll All", "Timesheet All", "Subsistance & Lodge", "Lodge", "Processed Attendance Normal Hours", "Timesheet Exceptions"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value",false,0,Replacer.ReplaceValue,{"Raw Timesheet", "Processed Attendance", "Payroll Flag", "Timesheet Flag", "Payroll All", "Timesheet All", "Subsistance & Lodge", "Lodge", "Processed Attendance Normal Hours", "Timesheet Exceptions"})
+				in
+				    #"Replaced Value1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

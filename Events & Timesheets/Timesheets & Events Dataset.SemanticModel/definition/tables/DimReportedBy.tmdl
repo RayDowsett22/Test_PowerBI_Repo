@@ -1,0 +1,267 @@
+table DimReportedBy
+	lineageTag: 041b2932-4b4c-44f0-b5c6-4a35ca12a4bd
+
+	column EntityID
+		dataType: int64
+		formatString: 0
+		lineageTag: eab6d602-9314-432c-a5de-eab8cbbaed9c
+		summarizeBy: none
+		sourceColumn: EntityID
+
+		annotation SummarizationSetBy = Automatic
+
+	column EntityDivisionID
+		dataType: int64
+		formatString: 0
+		lineageTag: dd277d87-e144-40c2-8c04-43878c2d7db5
+		summarizeBy: none
+		sourceColumn: EntityDivisionID
+
+		annotation SummarizationSetBy = Automatic
+
+	column StaffID
+		dataType: string
+		lineageTag: a56a92b1-073c-4216-af9e-2d6b4baea8e4
+		summarizeBy: none
+		sourceColumn: StaffID
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmploymentGUID
+		dataType: int64
+		formatString: 0
+		lineageTag: 054ef73c-aa9d-4d73-80b3-467a26e63987
+		summarizeBy: none
+		sourceColumn: EmploymentGUID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DeptID
+		dataType: int64
+		formatString: 0
+		lineageTag: a7073095-07ac-4ff3-93f6-12690428c215
+		summarizeBy: count
+		sourceColumn: DeptID
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserName
+		dataType: string
+		lineageTag: 081873ad-3472-419c-a61f-668ec643cd74
+		summarizeBy: none
+		sourceColumn: UserName
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShortName
+		dataType: string
+		lineageTag: c8bfdf71-d5d2-4dd7-a626-7d2eeaba4779
+		summarizeBy: none
+		sourceColumn: ShortName
+
+		annotation SummarizationSetBy = Automatic
+
+	column DesignationID
+		dataType: int64
+		formatString: 0
+		lineageTag: d1d25831-c876-4e26-8e4b-48b7b3bcca8e
+		summarizeBy: none
+		sourceColumn: DesignationID
+
+		annotation SummarizationSetBy = Automatic
+
+	column EntityName
+		dataType: string
+		lineageTag: 5672bcc8-ebd2-4327-966d-991c9dd734f2
+		summarizeBy: none
+		sourceColumn: EntityName
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmploymentStartDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0ec247db-0547-4f7a-af38-69a0705b7738
+		summarizeBy: none
+		sourceColumn: EmploymentStartDate
+
+		variation Variation
+			isDefault
+			relationship: e63b9e0e-9c92-4184-8e34-f47a51e9cfd2
+			defaultHierarchy: LocalDateTable_67380841-aa52-4eab-9823-a7ed7953536c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmploymentEndDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e676e7e3-a2d6-456e-b8d1-329653f5588a
+		summarizeBy: none
+		sourceColumn: EmploymentEndDate
+
+		variation Variation
+			isDefault
+			relationship: ec34c4c1-6a34-408a-bc6c-61e98d0b6039
+			defaultHierarchy: LocalDateTable_7a0eeb92-7fe8-46fb-a1db-793e0b57eeb2.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column FromDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 38225a03-f8a1-4789-b684-e0140fdeb180
+		summarizeBy: none
+		sourceColumn: FromDate
+
+		variation Variation
+			isDefault
+			relationship: 180779d6-3d56-4730-8f48-87025da3d923
+			defaultHierarchy: LocalDateTable_5248de6f-bcab-4312-b5f6-bf3163b9dd8d.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ToDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1b1166d8-542c-4637-a918-22a31fd01a4a
+		summarizeBy: none
+		sourceColumn: ToDate
+
+		variation Variation
+			isDefault
+			relationship: 7e0b3d97-1fb0-436c-9b7f-7d5c2c911915
+			defaultHierarchy: LocalDateTable_f94b5150-334f-4593-9a86-6d386cbe6ee8.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column PayrollFrequency
+		dataType: string
+		lineageTag: b66695b3-6431-476a-964f-e435976d2e6c
+		summarizeBy: none
+		sourceColumn: PayrollFrequency
+
+		annotation SummarizationSetBy = Automatic
+
+	column EntityTypeID
+		dataType: int64
+		formatString: 0
+		lineageTag: 6e19349a-5f17-4c0d-9408-ce11cdbcfc0f
+		summarizeBy: none
+		sourceColumn: EntityTypeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: 1d3018e5-7d18-4707-a5f0-22b124260fbf
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column InsertAuditID
+		dataType: int64
+		formatString: 0
+		lineageTag: 3ff10a0c-7fc4-4d61-af86-dd5ad86fdb6a
+		summarizeBy: count
+		sourceColumn: InsertAuditID
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpdateAuditID
+		dataType: int64
+		formatString: 0
+		lineageTag: efcd82db-2647-417f-96ac-025266f01233
+		summarizeBy: count
+		sourceColumn: UpdateAuditID
+
+		annotation SummarizationSetBy = Automatic
+
+	column isCurrent
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 6b126880-e67a-409e-a15a-661298fcef69
+		summarizeBy: none
+		sourceColumn: isCurrent
+
+		annotation SummarizationSetBy = Automatic
+
+	column DOB
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 630bf105-3d9e-4744-aa1e-a85527818aad
+		summarizeBy: none
+		sourceColumn: DOB
+
+		variation Variation
+			isDefault
+			relationship: c05d316c-d7de-41df-b8f6-31b9f48a1eb8
+			defaultHierarchy: LocalDateTable_5a0b6630-3729-4f66-bb24-dd670f7061c2.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column FirstName
+		dataType: string
+		lineageTag: c67f1876-5752-4064-819e-1c90b54d9cc5
+		summarizeBy: none
+		sourceColumn: FirstName
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastName
+		dataType: string
+		lineageTag: 9b7fce63-0b69-421b-a310-fff6c4360061
+		summarizeBy: none
+		sourceColumn: LastName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Email
+		dataType: string
+		lineageTag: 34d0c9ef-e5c9-41b3-97dd-a72c1a3c9f18
+		summarizeBy: none
+		sourceColumn: Email
+
+		annotation SummarizationSetBy = Automatic
+
+	column MMID_Code
+		dataType: string
+		lineageTag: c45bbbdc-228d-4b3c-b5d9-864dd1399d8c
+		summarizeBy: none
+		sourceColumn: MMID_Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column ChangedEmail
+		dataType: string
+		lineageTag: d9e72ed7-edfb-4dd5-bae5-2b5bc616eb8e
+		summarizeBy: none
+		sourceColumn: ChangedEmail
+
+		annotation SummarizationSetBy = Automatic
+
+	column Deleted
+		dataType: int64
+		formatString: 0
+		lineageTag: e09bb031-da7b-484f-97a8-c0699c30892c
+		summarizeBy: sum
+		sourceColumn: Deleted
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimReportedBy = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				    Source = Sql.Database(Instances, "JNBDW"),
+				    dbo_DimEntity = Source{[Schema="dbo",Item="DimEntity"]}[Data]
+				in
+				    dbo_DimEntity
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

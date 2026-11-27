@@ -1,0 +1,587 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "9189a9be59c6861d2dcd",
+  "position": {
+    "x": 0,
+    "y": 86.1776061776061,
+    "z": 22003,
+    "height": 633.82239382239391,
+    "width": 1280,
+    "tabOrder": 22002
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimSource"
+                    }
+                  },
+                  "Property": "SourceDescription"
+                }
+              },
+              "queryRef": "DimSource.SourceDescription",
+              "displayName": "Source"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimEventType"
+                    }
+                  },
+                  "Property": "EventTypeDescription"
+                }
+              },
+              "queryRef": "DimEventType.EventTypeDescription",
+              "displayName": "Event Type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "POS"
+                    }
+                  },
+                  "Property": "Project Full"
+                }
+              },
+              "queryRef": "POS.Project Full",
+              "nativeQueryRef": "Project Name",
+              "displayName": "Project Name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimReportedBy"
+                    }
+                  },
+                  "Property": "EntityName"
+                }
+              },
+              "queryRef": "DimReportedBy.EntityName",
+              "nativeQueryRef": "Reported by",
+              "displayName": "Reported by"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactEventRegister"
+                    }
+                  },
+                  "Property": "DOC_REF"
+                }
+              },
+              "queryRef": "FactEventRegister.DOC_REF",
+              "nativeQueryRef": "DocRef",
+              "displayName": "DocRef"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactEventActionResponse"
+                    }
+                  },
+                  "Property": "AnswerAction"
+                }
+              },
+              "queryRef": "FactEventActionResponse.AnswerAction",
+              "displayName": "Action Notes"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactEventActionResponse"
+                    }
+                  },
+                  "Property": "Number of Actions Closed"
+                }
+              },
+              "queryRef": "FactEventActionResponse.Number of Actions Closed",
+              "nativeQueryRef": "Actions",
+              "displayName": "Actions"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactEventActionResponse"
+                    }
+                  },
+                  "Property": "Number of Actions Closed - SLA"
+                }
+              },
+              "queryRef": "FactEventActionResponse.Number of Actions Closed - SLA",
+              "nativeQueryRef": "Closed Actions",
+              "displayName": "Closed Actions"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactEventActionResponse"
+                    }
+                  },
+                  "Property": "Response_ID"
+                }
+              },
+              "queryRef": "FactEventActionResponse.Response_ID",
+              "displayName": "IT Use Only"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "general": [
+        {
+          "properties": {}
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "176.4034008778973D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "FactEventActionResponse.AnswerAction"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "239.71499214915428D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "POS.Project Full"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "190.80531074559389D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "DimReportedBy.EntityName"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "63.64602440574869D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "FactEventActionResponse.Number of Actions Closed - SLA"
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "outlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "rowPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 4,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "backColorSecondary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F2F2F1'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#013976'"
+                    }
+                  }
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Report'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "30D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "Filter9d71665d2a5adc036f71",
+        "ordinal": 0,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FactEventActionResponse"
+              }
+            },
+            "Property": "AnswerAction"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "Filter95e38babbe68a998e6cf",
+        "ordinal": 1,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimEventType"
+              }
+            },
+            "Property": "EventTypeDescription"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "Filter7b7af3e4e5fc64450e14",
+        "ordinal": 2,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FactEventActionResponse"
+              }
+            },
+            "Property": "Requires_Action"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "f",
+              "Entity": "FactEventActionResponse",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "f"
+                          }
+                        },
+                        "Property": "Requires_Action"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Y'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User",
+        "isHiddenInViewMode": true
+      },
+      {
+        "name": "Filter3a612800a3a5fd58138f",
+        "ordinal": 3,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimSource"
+              }
+            },
+            "Property": "SourceDescription"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "Filter950d5727d16914580724",
+        "ordinal": 4,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimReportedBy"
+              }
+            },
+            "Property": "ShortName"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "8ad7dc956a0347951a65",
+        "ordinal": 5,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FactEventActionResponse"
+              }
+            },
+            "Property": "Response_ID"
+          }
+        },
+        "type": "Advanced",
+        "isHiddenInViewMode": true
+      },
+      {
+        "name": "549f2d88c93be13e9d11",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "POS"
+              }
+            },
+            "Property": "Project Full"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "21cf2723b742a7d71d1c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FactEventRegister"
+              }
+            },
+            "Property": "DOC_REF"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "a4044d993b899061bb57",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FactEventActionResponse"
+              }
+            },
+            "Property": "Number of Actions Closed"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "ebf4d34b05378a9d18cd",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FactEventActionResponse"
+              }
+            },
+            "Property": "Number of Actions Closed - SLA"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "b50723c6e347ed2a6640",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimReportedBy"
+              }
+            },
+            "Property": "EntityName"
+          }
+        },
+        "type": "Categorical"
+      }
+    ],
+    "filterSortOrder": "Custom"
+  }
+}

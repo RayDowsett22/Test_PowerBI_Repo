@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Timesheets & Events Dataset"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "0405f12f-50c7-44f2-9600-1da563e6b8eb"
+  }
+}

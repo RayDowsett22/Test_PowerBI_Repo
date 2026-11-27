@@ -1,0 +1,52 @@
+table DimLevel3Categorisation
+	lineageTag: ce901926-ce62-4d9b-bf28-ab12d083fbeb
+
+	column Level3CatID
+		dataType: int64
+		formatString: 0
+		lineageTag: 74161fdc-729d-4f71-9222-010609f7bef2
+		summarizeBy: none
+		sourceColumn: Level3CatID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Level 3 Categorisation'
+		dataType: string
+		lineageTag: 4b35bda4-1ec2-42dc-a5ae-a6d30b4a7de7
+		summarizeBy: none
+		sourceColumn: Level 3 Categorisation
+
+		annotation SummarizationSetBy = Automatic
+
+	column InsertAuditID
+		dataType: int64
+		formatString: 0
+		lineageTag: 3e3c202a-bc79-4b4a-806f-a1459c808eee
+		summarizeBy: none
+		sourceColumn: InsertAuditID
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpdateAuditID
+		dataType: int64
+		formatString: 0
+		lineageTag: 6c5bad65-be66-450b-ad0a-bac931d38984
+		summarizeBy: none
+		sourceColumn: UpdateAuditID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimLevel3Categorisation = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				    Source = Sql.Database(Instances, "JNBDW"),
+				    dbo_DimLevel3Categorisation = Source{[Schema="dbo",Item="DimLevel3Categorisation"]}[Data]
+				in
+				    dbo_DimLevel3Categorisation
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

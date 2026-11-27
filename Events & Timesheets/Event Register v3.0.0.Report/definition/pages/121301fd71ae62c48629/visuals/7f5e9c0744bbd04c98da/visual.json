@@ -1,0 +1,445 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "7f5e9c0744bbd04c98da",
+  "position": {
+    "x": 880.926640926641,
+    "y": 172.66409266409266,
+    "z": 22006,
+    "height": 547.33590733590734,
+    "width": 399.07335907335909,
+    "tabOrder": 22005
+  },
+  "visual": {
+    "visualType": "PowerApps_PBI_CV_C29F1DCC_81F5_4973_94AD_0517D44CC06A",
+    "query": {
+      "queryState": {
+        "table": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "XpedeonWritebackEventActions"
+                    }
+                  },
+                  "Property": "ResponseID"
+                }
+              },
+              "queryRef": "XpedeonWriteBack Event.ResponseID",
+              "nativeQueryRef": "ResponseID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "XpedeonWritebackEventActions"
+                    }
+                  },
+                  "Property": "KeyID"
+                }
+              },
+              "queryRef": "XpedeonWriteBack Event.KeyID",
+              "nativeQueryRef": "KeyID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "XpedeonWritebackEventActions"
+                    }
+                  },
+                  "Property": "DocRef"
+                }
+              },
+              "queryRef": "XpedeonWriteBack Event.DocRef",
+              "nativeQueryRef": "DocRef"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "XpedeonWritebackEventActions"
+                    }
+                  },
+                  "Property": "ActionNotes"
+                }
+              },
+              "queryRef": "XpedeonWriteBack Event.ActionNotes",
+              "nativeQueryRef": "ActionNotes"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "XpedeonWritebackEventActions"
+                    }
+                  },
+                  "Property": "ActionRequired"
+                }
+              },
+              "queryRef": "XpedeonWriteBack Event.ActionRequired",
+              "nativeQueryRef": "ActionRequired"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "XpedeonWritebackEventActions"
+                    }
+                  },
+                  "Property": "InProgressNotes"
+                }
+              },
+              "queryRef": "XpedeonWriteBack Event.InProgressNotes",
+              "nativeQueryRef": "InProgressNotes"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "XpedeonWritebackEventActions"
+                    }
+                  },
+                  "Property": "ActionClosed"
+                }
+              },
+              "queryRef": "XpedeonWriteBack Event.ActionClosed",
+              "nativeQueryRef": "ActionClosed"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "XpedeonWritebackEventActions"
+                    }
+                  },
+                  "Property": "ActionCompleted"
+                }
+              },
+              "queryRef": "XpedeonWriteBack Event.ActionCompleted",
+              "nativeQueryRef": "ActionCompleted"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "XpedeonWritebackEventActions"
+                    }
+                  },
+                  "Property": "Current Owner"
+                }
+              },
+              "queryRef": "XpedeonWriteBack Event.Current Owner",
+              "nativeQueryRef": "Current Owner"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "XpedeonWritebackEventActions"
+                    }
+                  },
+                  "Property": "Comment"
+                }
+              },
+              "queryRef": "XpedeonWriteBack Event.Comment",
+              "nativeQueryRef": "Comment"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "XpedeonWritebackEventActions"
+                    }
+                  },
+                  "Property": "ModifiedDate"
+                }
+              },
+              "queryRef": "XpedeonWriteBack Event.ModifiedDate",
+              "nativeQueryRef": "ModifiedDate"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "XpedeonWritebackEventActions"
+                    }
+                  },
+                  "Property": "Processed"
+                }
+              },
+              "queryRef": "XpedeonWriteBack Event.Processed",
+              "nativeQueryRef": "Processed"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "XpedeonWritebackEventActions"
+                  }
+                },
+                "Property": "ResponseID"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "appId": {
+              "expr": {
+                "Literal": {
+                  "Value": "'/providers/Microsoft.PowerApps/apps/f0008fb3-8ef6-4cc5-8706-702307bfee72'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "88ea8f7501207b0d2d59",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "XpedeonWritebackEventActions"
+              }
+            },
+            "Property": "ResponseID"
+          }
+        },
+        "type": "Advanced",
+        "isHiddenInViewMode": true
+      },
+      {
+        "name": "61b8ef2e9223ddc5711b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "XpedeonWritebackEventActions"
+              }
+            },
+            "Property": "KeyID"
+          }
+        },
+        "type": "Advanced",
+        "isHiddenInViewMode": true
+      },
+      {
+        "name": "ad0f5f81c62d6b370b2a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "XpedeonWritebackEventActions"
+              }
+            },
+            "Property": "DocRef"
+          }
+        },
+        "type": "Categorical",
+        "isHiddenInViewMode": true
+      },
+      {
+        "name": "5e5be39816060d16ad09",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "XpedeonWritebackEventActions"
+              }
+            },
+            "Property": "ActionNotes"
+          }
+        },
+        "type": "Categorical",
+        "isHiddenInViewMode": true
+      },
+      {
+        "name": "50e9facd74d52453633b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "XpedeonWritebackEventActions"
+              }
+            },
+            "Property": "ActionRequired"
+          }
+        },
+        "type": "Categorical",
+        "isHiddenInViewMode": true
+      },
+      {
+        "name": "a82665875287031640a8",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "XpedeonWritebackEventActions"
+              }
+            },
+            "Property": "InProgressNotes"
+          }
+        },
+        "type": "Categorical",
+        "isHiddenInViewMode": true
+      },
+      {
+        "name": "c2c80ca700080686a58b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "XpedeonWritebackEventActions"
+              }
+            },
+            "Property": "ActionClosed"
+          }
+        },
+        "type": "Categorical",
+        "isHiddenInViewMode": true
+      },
+      {
+        "name": "2cc15ea09d0d878cb904",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "XpedeonWritebackEventActions"
+              }
+            },
+            "Property": "ActionCompleted"
+          }
+        },
+        "type": "Categorical",
+        "isHiddenInViewMode": true
+      },
+      {
+        "name": "ff126230aa36b1639395",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "XpedeonWritebackEventActions"
+              }
+            },
+            "Property": "Current Owner"
+          }
+        },
+        "type": "Categorical",
+        "isHiddenInViewMode": true
+      },
+      {
+        "name": "6873b2b8008e667e1845",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "XpedeonWritebackEventActions"
+              }
+            },
+            "Property": "Comment"
+          }
+        },
+        "type": "Categorical",
+        "isHiddenInViewMode": true
+      },
+      {
+        "name": "01c85095c8707916c6c3",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "XpedeonWritebackEventActions"
+              }
+            },
+            "Property": "ModifiedDate"
+          }
+        },
+        "type": "Categorical",
+        "isHiddenInViewMode": true
+      },
+      {
+        "name": "70a4e09e19ca94c08000",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "XpedeonWritebackEventActions"
+              }
+            },
+            "Property": "Processed"
+          }
+        },
+        "type": "Categorical",
+        "isHiddenInViewMode": true
+      }
+    ]
+  }
+}

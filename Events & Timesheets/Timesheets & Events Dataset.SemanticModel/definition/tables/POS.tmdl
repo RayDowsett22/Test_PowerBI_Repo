@@ -1,0 +1,243 @@
+table POS
+	lineageTag: dae93d7a-59f5-4988-8fc2-4848de3c4d16
+
+	column ProjectID
+		dataType: int64
+		formatString: 0
+		lineageTag: 11a6a85a-cb75-44b6-91dc-eeee6ce17f70
+		summarizeBy: none
+		sourceColumn: ProjectID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project Code'
+		dataType: string
+		lineageTag: f60b2085-74f4-4a78-93b1-cf378e2b250d
+		summarizeBy: none
+		sourceColumn: Project Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Project
+		dataType: string
+		lineageTag: 84f24ec7-1188-4d8b-ab92-d27cfc45adb8
+		summarizeBy: none
+		sourceColumn: Project
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project Full'
+		dataType: string
+		lineageTag: 1d4478dc-506c-4ba1-855f-5285cd948760
+		summarizeBy: none
+		sourceColumn: Project Full
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProjectTypeID
+		dataType: int64
+		formatString: 0
+		lineageTag: 5ae7f5b5-f977-4baa-9a4c-e20a598f70ca
+		summarizeBy: count
+		sourceColumn: ProjectTypeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Framework Contract Code'
+		dataType: string
+		lineageTag: fd5b1445-bf8e-4890-b189-ff44882c0dda
+		summarizeBy: none
+		sourceColumn: Framework Contract Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column FrameworkContract
+		dataType: string
+		lineageTag: fea52683-3dac-4185-9668-51a8bf6bb04a
+		summarizeBy: none
+		sourceColumn: FrameworkContract
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Framework Contract Full'
+		dataType: string
+		lineageTag: 0a450670-3951-4c22-936c-6f1e2aabaf29
+		summarizeBy: none
+		sourceColumn: Framework Contract Full
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Client Code'
+		dataType: string
+		lineageTag: 92ba0c37-c66e-4f3b-abb4-90246dc255a5
+		summarizeBy: none
+		sourceColumn: Client Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClientName
+		dataType: string
+		lineageTag: 7e3bb3c6-b19c-453a-a60a-1384b6542219
+		summarizeBy: none
+		sourceColumn: ClientName
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Framework Agreement ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 782cf4e9-7038-45c7-a131-dc4f1c59632e
+		summarizeBy: count
+		sourceColumn: Framework Agreement ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column FrameworkAgreementName
+		dataType: string
+		lineageTag: e0596f8e-6970-420d-97eb-241d13a7bf51
+		summarizeBy: none
+		sourceColumn: FrameworkAgreementName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Active
+		dataType: string
+		lineageTag: f88d830d-3cee-4f04-9b12-12a9ee058291
+		summarizeBy: none
+		sourceColumn: Active
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Post Code'
+		dataType: string
+		lineageTag: 670902f5-1690-4a9c-9fc0-2f365efaf19e
+		summarizeBy: none
+		sourceColumn: Post Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Company
+		dataType: string
+		lineageTag: caa28a28-73ea-4651-8bf8-4199ea8607c9
+		summarizeBy: none
+		sourceColumn: Company
+
+		annotation SummarizationSetBy = Automatic
+
+	column Director
+		dataType: string
+		lineageTag: 33f92573-3cf7-4f05-9da1-4333a52319e9
+		summarizeBy: none
+		sourceColumn: Director
+
+		annotation SummarizationSetBy = Automatic
+
+	column OperationsManager
+		dataType: string
+		lineageTag: cb112c1c-7289-49f6-823b-84acbbcd6cf5
+		summarizeBy: none
+		sourceColumn: OperationsManager
+
+		annotation SummarizationSetBy = Automatic
+
+	column ContractsManager
+		dataType: string
+		lineageTag: 15d1d3d2-2e3b-4606-8174-8aba0d5be3d2
+		summarizeBy: none
+		sourceColumn: ContractsManager
+
+		annotation SummarizationSetBy = Automatic
+
+	column CommercialManager
+		dataType: string
+		lineageTag: 57c0f8dd-4b70-46be-9541-fc92323d6303
+		summarizeBy: none
+		sourceColumn: CommercialManager
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuantitySurveyor
+		dataType: string
+		lineageTag: 948304cf-e50c-4979-9471-7d90e8cee808
+		summarizeBy: none
+		sourceColumn: QuantitySurveyor
+
+		annotation SummarizationSetBy = Automatic
+
+	column SiteAgent
+		dataType: string
+		lineageTag: 5b6f9911-abb9-4519-9790-38e0b1427303
+		summarizeBy: none
+		sourceColumn: SiteAgent
+
+		annotation SummarizationSetBy = Automatic
+
+	column DesignManager
+		dataType: string
+		lineageTag: 51a5209e-ff3a-4e15-8f21-cf31bc6383fe
+		summarizeBy: none
+		sourceColumn: DesignManager
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project Leader'
+		dataType: string
+		lineageTag: dde0a7c0-9511-479a-a871-ed79a76cb960
+		summarizeBy: none
+		sourceColumn: Project Leader
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'MEP Engineer'
+		dataType: string
+		lineageTag: 1e15cdeb-1ca3-4ba9-a932-4b731dc7d742
+		summarizeBy: none
+		sourceColumn: MEP Engineer
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'M&E Design Engineer'
+		dataType: string
+		lineageTag: 15801387-7935-4faf-8c07-c72e36f81691
+		summarizeBy: none
+		sourceColumn: M&E Design Engineer
+
+		annotation SummarizationSetBy = Automatic
+
+	column Unit
+		dataType: string
+		lineageTag: 4746cc3b-0d78-4e77-a4fd-e935086c44dd
+		summarizeBy: none
+		sourceColumn: Unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExcludeProjects
+		dataType: string
+		lineageTag: 3359b166-efb8-4280-93c7-3fa68d3a58ed
+		summarizeBy: none
+		sourceColumn: ExcludeProjects
+
+		annotation SummarizationSetBy = Automatic
+
+	partition POS = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				    Source = Sql.Database(Instances, "JNBDW", [Query="-- Retrieve project, framework, client and key project role details#(lf)SELECT PivotTable.[ProjectID]#(lf)      ,[ProjectCode] AS [Project Code]#(lf)      ,[ProjectName] AS [Project Name]#(lf)#(tab)  ,[ProjectFull] AS [Project Full]#(lf)#(tab)  ,[ProjectTypeID]#(lf)#(tab)  ,[FrameworkContractCode] AS [Framework Contract Code]#(lf)#(tab)  ,[FrameworkContractName] AS [Framework Contract Name]#(lf)#(tab)  ,[FrameworkContractFull] AS [Framework Contract Full]#(lf)#(tab)  ,[ClientCode] AS [Client Code]#(lf)#(tab)  ,[ClientName] AS [Client Name]#(lf)#(tab)  ,[Framework_Agreement_ID] AS [Framework Agreement ID]#(lf)#(tab)  ,[Framework_Agreement_Name] AS [Framework Agreement Name]#(lf)#(tab)  ,[Active]#(lf)#(tab)  ,[PostCode] AS [Post Code]#(lf)#(tab)  ,[CompanyName] AS [Company]#(lf)#(tab)  ,[Director] AS [Commercial Director], [Operations Manager], [Contracts Manager], [Commercial Manager], [Quantity Surveyor], [Site Agent], [Design Manager], [Project Leader], [MEP Engineer], [M&E Design Engineer], [Unit]#(lf)FROM(#(lf)SELECT P.[ProjectID]#(lf)      ,P.[ProjectCode]#(lf)      ,P.[ProjectName]#(lf)#(tab)  ,P.[ProjectTypeID]#(lf)#(tab)  ,CONCAT_WS(' - ',P.[ProjectCode],P.[ProjectName]) AS [ProjectFull]#(lf)#(tab)  ,C.[ContractCode] AS [FrameworkContractCode]#(lf)#(tab)  ,C.[ContractName] AS [FrameworkContractName]#(lf)#(tab)  ,CONCAT_WS(' - ',C.[ContractCode],C.[ContractName]) AS [FrameworkContractFull]#(lf)#(tab)  ,Cl.[ClientCode]#(lf)#(tab)  ,Cl.[ClientName]#(lf)#(tab)  ,F.[Framework_Agreement_ID]#(lf)#(tab)  ,F.[Framework_Agreement_Name]#(lf)#(tab)  ,P.[Active]#(lf)      ,R.[Pos_name]#(lf)      ,E.[ShortName]#(lf)#(tab)  ,P.[PostCode]#(lf)#(tab)  ,Co.[CompanyName]#(lf)  FROM [JNBDW].[dbo].[DimProjectEmployeeRole] PER INNER JOIN#(lf)       [JNBDW].[dbo].[DimRole] R ON PER.[RoleID] = R.[RoleID] INNER JOIN#(lf)#(tab)   [JNBDW].[dbo].[DimProject] P ON PER.[ProjectID] = P.[ProjectID] INNER JOIN#(lf)#(tab)   [JNBDW].[dbo].[DimEntity] E ON PER.[CurrentEmployeeID] = E.[EntityID] INNER JOIN#(lf)#(tab)   [JNBDW].[dbo].[DimContract] C ON P.[ContractID] = C.[ContractID] INNER JOIN#(lf)#(tab)   [JNBDW].[dbo].[DimClient] Cl ON C.[ClientID] = Cl.[ClientID] INNER JOIN#(lf)#(tab)   [JNBDW].[dbo].[DimFramework] F ON C.[FrameWorkID] = F.[FrameworkID] INNER JOIN#(lf)#(tab)   [JNBDW].[dbo].[DimCompany] Co ON Co.[CompanyID] = P.[CompanyID]#(lf)  -- Include current, non-deleted project employee roles#(lf)  WHERE PER.[IsCurrent] = 1 AND PER.[Isdeleted] <> 1 AND PER.RoleID IN (35,23,24,33,28,25,34,29,31,32, 47)) AS SourceTable#(lf)#(lf)-- Pivot employee roles into individual columns against each project#(lf)PIVOT#(lf)(MAX([ShortName]) FOR [Pos_name] IN ([Director], [Operations Manager], [Contracts Manager], [Commercial Manager], [Quantity Surveyor], [Site Agent], [Design Manager], [Project Leader], [MEP Engineer], [M&E Design Engineer], [Unit])) AS PivotTable#(lf)#(lf)#(lf)-- Add projects that do not have project employee roles#(lf)UNION ALL#(lf)#(lf)SELECT P.[ProjectID]#(lf)      ,P.[ProjectCode]#(lf)      ,P.[ProjectName]#(lf)#(tab)  ,CONCAT_WS(' - ',P.[ProjectCode],P.[ProjectName]) AS [ProjectFull]#(lf)#(tab)  ,P.[ProjectTypeID]#(lf)#(tab)  ,C.[ContractCode] AS [FrameworkContractCode]#(lf)#(tab)  ,C.[ContractName] AS [FrameworkContractName]#(lf)#(tab)  ,CONCAT_WS(' - ',C.[ContractCode],C.[ContractName]) AS [FrameworkContractFull]#(lf)#(tab)  ,Cl.[ClientCode]#(lf)#(tab)  ,Cl.[ClientName]#(lf)#(tab)  ,F.[Framework_Agreement_ID]#(lf)#(tab)  ,F.[Framework_Agreement_Name]#(lf)#(tab)  ,P.[Active]#(lf)#(tab)  ,P.[PostCode]#(lf)#(tab)  ,Co.[CompanyName]#(lf)#(tab)  ,NULL#(lf)#(tab)  ,NULL#(lf)#(tab)  ,NULL#(lf)#(tab)  ,NULL#(lf)#(tab)  ,NULL#(lf)#(tab)  ,NULL#(lf)#(tab)  ,NULL#(lf)#(tab)  ,NULL#(lf)#(tab)  ,NULL#(lf)#(tab)  ,NULL#(lf)#(tab)  ,NULL#(lf)FROM [JNBDW].[dbo].[DimProject] P INNER JOIN#(lf)#(tab)        [JNBDW].[dbo].[DimContract] C ON P.[ContractID] = C.[ContractID] INNER JOIN#(lf)#(tab)        [JNBDW].[dbo].[DimClient] Cl ON C.[ClientID] = Cl.[ClientID] INNER JOIN#(lf)#(tab)        [JNBDW].[dbo].[DimFramework] F ON C.[FrameWorkID] = F.[FrameworkID] INNER JOIN#(lf)#(tab)        [JNBDW].[dbo].[DimCompany] Co ON Co.[CompanyID] = P.[CompanyID] INNER JOIN#(lf)#(tab)        [JNBDW].[dbo].[DimProjectType] PT ON PT.[ProjectTypeID] = P.[ProjectTypeID] LEFT OUTER JOIN#(lf)#(tab)#(tab)#(tab)[JNBDW].[dbo].[DimProjectEmployeeRole] PER ON PER.[ProjectID] = P.[ProjectID] AND PER.[Isdeleted] <> 1#(lf)WHERE PER.[ProjectID] IS NULL"]),
+				    #"Sorted Rows" = Table.Sort(Source,{{"ProjectID", Order.Ascending}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Sorted Rows",null,"Unassigned",Replacer.ReplaceValue,{"Commercial Director", "Operations Manager", "Contracts Manager", "Commercial Manager", "Quantity Surveyor", "Site Agent", "Design Manager", "Project Leader", "MEP Engineer", "M&E Design Engineer", "Unit"}),
+				    #"Filtered Rows" = Table.SelectRows(#"Replaced Value", each not Text.Contains([Project Name], "Dummy")),
+				    #"Removed Duplicates" = Table.Distinct(#"Filtered Rows"),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Duplicates",{{"Commercial Director", "Director"}, {"Site Agent", "SiteAgent"}, {"Operations Manager", "OperationsManager"}, {"Commercial Manager", "CommercialManager"}, {"Contracts Manager", "ContractsManager"}, {"Design Manager", "DesignManager"}, {"Quantity Surveyor", "QuantitySurveyor"}, {"Framework Agreement Name", "FrameworkAgreementName"}, {"Framework Contract Name", "FrameworkContract"}, {"Project Name", "Project"}, {"Client Name", "ClientName"}}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Renamed Columns","A","Active",Replacer.ReplaceText,{"Active"}),
+				    #"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1","I","Inactive",Replacer.ReplaceText,{"Active"}),
+				    #"Added Conditional Column" = Table.AddColumn(#"Replaced Value2", "ExcludeProjects", each if Text.StartsWith([Project Code], "PRA") then 1 else if Text.StartsWith([Project Code], "ZZ") then 1 else 0)
+				in
+				    #"Added Conditional Column"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

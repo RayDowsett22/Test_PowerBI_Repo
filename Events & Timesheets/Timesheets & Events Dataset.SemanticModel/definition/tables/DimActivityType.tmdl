@@ -1,0 +1,42 @@
+table DimActivityType
+	lineageTag: d7bf7cec-5ecc-4cbd-bac1-dd636e428ff3
+
+	column ActivityTypeID
+		dataType: int64
+		formatString: 0
+		lineageTag: b38c8228-7c61-4f7d-84c7-71b0e635ff68
+		summarizeBy: none
+		sourceColumn: ActivityTypeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ActivityTypeCode
+		dataType: string
+		lineageTag: 793db842-a833-4392-8295-1e88785e899e
+		summarizeBy: none
+		sourceColumn: ActivityTypeCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column ActivityTypeDescription
+		dataType: string
+		lineageTag: 2f431776-44d6-421e-9f56-1b66fe023850
+		summarizeBy: none
+		sourceColumn: ActivityTypeDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimActivityType = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				    Source = Sql.Database(Instances, "JNBDW"),
+				    dbo_DimActivityType = Source{[Schema="dbo",Item="DimActivityType"]}[Data]
+				in
+				    dbo_DimActivityType
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

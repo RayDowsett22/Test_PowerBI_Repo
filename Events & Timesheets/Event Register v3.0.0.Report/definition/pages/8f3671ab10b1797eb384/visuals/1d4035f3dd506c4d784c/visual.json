@@ -1,0 +1,1273 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "1d4035f3dd506c4d784c",
+  "position": {
+    "x": 0,
+    "y": 253.25536062378168,
+    "z": 7001,
+    "height": 466.588693957115,
+    "width": 1280,
+    "tabOrder": 22001
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Columns": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimDate"
+                    }
+                  },
+                  "Property": "Long Month Year"
+                }
+              },
+              "queryRef": "DimDate.Long Month Year",
+              "active": true,
+              "displayName": "Month Year"
+            }
+          ]
+        },
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "POS"
+                    }
+                  },
+                  "Property": "Project Code"
+                }
+              },
+              "queryRef": "POS.Project Code",
+              "nativeQueryRef": "Project Code",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactEventRegister"
+                    }
+                  },
+                  "Property": "DOC_REF"
+                }
+              },
+              "queryRef": "FactEventRegister.DOC_REF",
+              "nativeQueryRef": "DocRef",
+              "active": false,
+              "displayName": "DocRef"
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactEventActionResponseCarbonSummary"
+                    }
+                  },
+                  "Property": "0-1 Tonnes CO2e Added"
+                }
+              },
+              "queryRef": "FactEventActionResponseCarbonSummary.0-1 Tonnes CO2e Added",
+              "nativeQueryRef": "0-1 Added",
+              "displayName": "0-1 Added"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactEventActionResponseCarbonSummary"
+                    }
+                  },
+                  "Property": "0-1 Tonnes CO2e Saved"
+                }
+              },
+              "queryRef": "FactEventActionResponseCarbonSummary.0-1 Tonnes CO2e Saved",
+              "nativeQueryRef": "0-1 Saved",
+              "displayName": "0-1 Saved"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactEventActionResponseCarbonSummary"
+                    }
+                  },
+                  "Property": "1-10 Tonnes CO2e Added"
+                }
+              },
+              "queryRef": "FactEventActionResponseCarbonSummary.1-10 Tonnes CO2e Added",
+              "nativeQueryRef": "1-10 Added",
+              "displayName": "1-10 Added"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactEventActionResponseCarbonSummary"
+                    }
+                  },
+                  "Property": "1-10 Tonnes CO2e Saved"
+                }
+              },
+              "queryRef": "FactEventActionResponseCarbonSummary.1-10 Tonnes CO2e Saved",
+              "nativeQueryRef": "1-10 Saved",
+              "displayName": "1-10 Saved"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactEventActionResponseCarbonSummary"
+                    }
+                  },
+                  "Property": ">10 Tonnes CO2e Added"
+                }
+              },
+              "queryRef": "FactEventActionResponseCarbonSummary.>10 Tonnes CO2e Added",
+              "nativeQueryRef": ">10 Added",
+              "displayName": ">10 Added"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactEventActionResponseCarbonSummary"
+                    }
+                  },
+                  "Property": ">10 Tonnes CO2e Saved"
+                }
+              },
+              "queryRef": "FactEventActionResponseCarbonSummary.>10 Tonnes CO2e Saved",
+              "nativeQueryRef": ">10 Saved",
+              "displayName": ">10 Saved"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactEventActionResponseCarbonSummary"
+                    }
+                  },
+                  "Property": "CO2Added"
+                }
+              },
+              "queryRef": "FactEventActionResponseCarbonSummary.CO2Added",
+              "nativeQueryRef": "Added",
+              "displayName": "Added"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactEventActionResponseCarbonSummary"
+                    }
+                  },
+                  "Property": "CO2Saved"
+                }
+              },
+              "queryRef": "FactEventActionResponseCarbonSummary.CO2Saved",
+              "nativeQueryRef": "Saved",
+              "displayName": "Saved"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactEventActionResponseCarbonSummary"
+                    }
+                  },
+                  "Property": "Exact CO2 Added"
+                }
+              },
+              "queryRef": "FactEventActionResponseCarbonSummary.Exact CO2 Added",
+              "nativeQueryRef": "Exact Added1",
+              "displayName": "Exact Added"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactEventActionResponseCarbonSummary"
+                    }
+                  },
+                  "Property": "Exact CO2 Saved"
+                }
+              },
+              "queryRef": "FactEventActionResponseCarbonSummary.Exact CO2 Saved",
+              "nativeQueryRef": "Exact Saved1",
+              "displayName": "Exact Saved"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactEventActionResponseCarbonSummary"
+                    }
+                  },
+                  "Property": "Exact CO2 Impact"
+                }
+              },
+              "queryRef": "FactEventActionResponseCarbonSummary.Exact CO2 Impact",
+              "nativeQueryRef": "Exact Impact1",
+              "displayName": "Exact Impact"
+            }
+          ]
+        }
+      }
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "POS.Project Code"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "FactEventRegister.DOC_REF"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {}
+      }
+    ],
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "autoSizeColumnWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 4,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "outlineStyle": {
+              "expr": {
+                "Literal": {
+                  "Value": "8L"
+                }
+              }
+            },
+            "valuesOnRow": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "114.87137324385016D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "CE Event Register.ReportedBy"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "140D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "DimDate"
+                          }
+                        },
+                        "Property": "Long Month Year"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'February 2022'"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "metadata": "Base Measures.AAASizeColumns"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "140D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "DimDate"
+                          }
+                        },
+                        "Property": "Long Month Year"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'March 2022'"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "metadata": "Base Measures.AAASizeColumns"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "140D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "DimDate"
+                          }
+                        },
+                        "Property": "Long Month Year"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'April 2022'"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "metadata": "Base Measures.AAASizeColumns"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "140D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "DimDate"
+                          }
+                        },
+                        "Property": "Long Month Year"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "null"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "metadata": "Base Measures.AAASizeColumns"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "140D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "DimDate"
+                          }
+                        },
+                        "Property": "Long Month Year"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'May 2022'"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "metadata": "Base Measures.AAASizeColumns"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "152D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "total": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DimDate"
+                        }
+                      },
+                      "Property": "Long Month Year"
+                    }
+                  }
+                ]
+              }
+            ],
+            "metadata": "Base Measures.AAASizeColumns"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "96D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "DimDate"
+                          }
+                        },
+                        "Property": "Long Month Year"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'February 2022'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "80D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "DimDate"
+                          }
+                        },
+                        "Property": "Long Month Year"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'March 2022'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "78D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "DimDate"
+                          }
+                        },
+                        "Property": "Long Month Year"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'April 2022'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "78D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "DimDate"
+                          }
+                        },
+                        "Property": "Long Month Year"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "null"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "78D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "DimDate"
+                          }
+                        },
+                        "Property": "Long Month Year"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'May 2022'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "84D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "total": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DimDate"
+                        }
+                      },
+                      "Property": "Long Month Year"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "rowHeaders": [
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "outlineStyle": {
+              "expr": {
+                "Literal": {
+                  "Value": "8L"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTotals": [
+        {
+          "properties": {
+            "rowSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "columnSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "rowSubtotalsPosition": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Top'"
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "applyToHeaders": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "Column"
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "gridHorizontal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "gridVertical": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "gridVerticalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.2
+                    }
+                  }
+                }
+              }
+            },
+            "gridHorizontalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.2
+                    }
+                  }
+                }
+              }
+            },
+            "outlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "rowPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "rowTotal": [
+        {
+          "properties": {}
+        }
+      ],
+      "columnTotal": [
+        {
+          "properties": {}
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "layout": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Outline'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Default'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualTooltip": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "section": {
+              "expr": {
+                "Literal": {
+                  "Value": "'ReportSection39ca8f7957228a73e010'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "30D"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.3
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Attendance Matrix'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "Filter65df384660cac04be5da",
+        "ordinal": 0,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimDate"
+              }
+            },
+            "Property": "Long Month Year"
+          }
+        },
+        "type": "Categorical",
+        "isHiddenInViewMode": true
+      },
+      {
+        "name": "182e47771d0e441bd114",
+        "ordinal": 1,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "POS - Unpivot"
+              }
+            },
+            "Property": "Value"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "3623d47682d538d70d24",
+        "ordinal": 2,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FactEventRegister"
+              }
+            },
+            "Property": "DOC_REF"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "6674d054bc1a7431a9c2",
+        "ordinal": 3,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "POS"
+              }
+            },
+            "Property": "Project Code"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "b90014300237d871473d",
+        "ordinal": 4,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FactEventActionResponseCarbonSummary"
+              }
+            },
+            "Property": "Exact CO2 Added"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "4aea3f0f56ea881875d0",
+        "ordinal": 5,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FactEventActionResponseCarbonSummary"
+              }
+            },
+            "Property": "Exact CO2 Saved"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "ed525c0d2d230bc48730",
+        "ordinal": 6,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FactEventActionResponseCarbonSummary"
+              }
+            },
+            "Property": "Exact CO2 Impact"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "14af6c12ee73ba03e97e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FactEventActionResponseCarbonSummary"
+              }
+            },
+            "Property": "0-1 Tonnes CO2e Added"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "50600180b7b28d0a0d44",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FactEventActionResponseCarbonSummary"
+              }
+            },
+            "Property": "0-1 Tonnes CO2e Saved"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f93af71b4da7088b42a0",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FactEventActionResponseCarbonSummary"
+              }
+            },
+            "Property": "1-10 Tonnes CO2e Added"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "e9a220d003b3b1a177b0",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FactEventActionResponseCarbonSummary"
+              }
+            },
+            "Property": "1-10 Tonnes CO2e Saved"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "6903847d65d0118e0b9c",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FactEventActionResponseCarbonSummary"
+              }
+            },
+            "Property": ">10 Tonnes CO2e Added"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "7264a6f026420509aeba",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FactEventActionResponseCarbonSummary"
+              }
+            },
+            "Property": ">10 Tonnes CO2e Saved"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a958d0c45a6e4e04dcca",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FactEventActionResponseCarbonSummary"
+              }
+            },
+            "Property": "CO2Added"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "cf0e22fe360a20dec251",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FactEventActionResponseCarbonSummary"
+              }
+            },
+            "Property": "CO2Saved"
+          }
+        },
+        "type": "Advanced"
+      }
+    ],
+    "filterSortOrder": "Custom"
+  }
+}

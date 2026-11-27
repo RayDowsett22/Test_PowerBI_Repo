@@ -1,0 +1,34 @@
+table DimSource
+	lineageTag: 5ee7fced-7b6b-4467-86ab-7ab60230bc05
+
+	column SourceID
+		dataType: int64
+		formatString: 0
+		lineageTag: f5cda6c9-1f21-4232-9f81-fdaa5288ac0b
+		summarizeBy: none
+		sourceColumn: SourceID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SourceDescription
+		dataType: string
+		lineageTag: f0197c6d-efe5-47dd-8124-06883f175c39
+		summarizeBy: none
+		sourceColumn: SourceDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimSource = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				    Source = Sql.Database(Instances, "JNBDW"),
+				    dbo_DimSource = Source{[Schema="dbo",Item="DimSource"]}[Data]
+				in
+				    dbo_DimSource
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

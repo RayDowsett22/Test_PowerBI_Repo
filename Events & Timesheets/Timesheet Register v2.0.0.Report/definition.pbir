@@ -1,0 +1,9 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definitionProperties/2.0.0/schema.json",
+  "version": "4.0",
+  "datasetReference": {
+    "byConnection": {
+      "connectionString": "Data Source=\"powerbi://api.powerbi.com/v1.0/myorg/Xpedeon Registers\";initial catalog=\"Timesheets & Events Dataset\";access mode=readonly;integrated security=ClaimsToken;semanticmodelid=4c2400a1-cd42-42ec-9ff9-7d441160d40b"
+    }
+  }
+}

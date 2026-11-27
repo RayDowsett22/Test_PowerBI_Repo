@@ -1,0 +1,106 @@
+table 'BIAbout vw_Info'
+	lineageTag: 9c39792b-042f-4f69-a76e-34cf46c6e464
+
+	column ElementID
+		dataType: int64
+		formatString: 0
+		lineageTag: 3f7d052b-a7d1-4b6c-bce3-e881980d785d
+		summarizeBy: none
+		sourceColumn: ElementID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ElementName
+		dataType: string
+		lineageTag: f2b06e9a-5822-46ab-b2d9-8b762d2b331a
+		summarizeBy: none
+		sourceColumn: ElementName
+
+		annotation SummarizationSetBy = Automatic
+
+	column ElementDescription
+		dataType: string
+		lineageTag: 9f93ddca-9604-4acd-bfbf-897982124719
+		summarizeBy: none
+		sourceColumn: ElementDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column CurrentVersion
+		dataType: string
+		lineageTag: abfd803e-ac5a-4325-800b-f740d5a99a5d
+		summarizeBy: none
+		sourceColumn: CurrentVersion
+
+		annotation SummarizationSetBy = Automatic
+
+	column ISCDescription
+		dataType: string
+		lineageTag: 332541c2-0fe8-4196-9517-15b0efa7cc7c
+		summarizeBy: none
+		sourceColumn: ISCDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column GoliveDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a0c3a17e-7d3f-4627-8427-860b6238194a
+		summarizeBy: none
+		sourceColumn: GoliveDate
+
+		variation Variation
+			isDefault
+			relationship: b20987c7-45a9-4205-9fcf-5bf14f85bced
+			defaultHierarchy: LocalDateTable_499b292d-e969-4379-8379-4d357a4ff425.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShortName
+		dataType: string
+		lineageTag: 8321df05-63a7-4a90-a8f9-c2fc2f6488ea
+		summarizeBy: none
+		sourceColumn: ShortName
+
+		annotation SummarizationSetBy = Automatic
+
+	column LatestUpdateDescription
+		dataType: string
+		lineageTag: b3779b4b-6d0c-48f3-a41a-859721980f04
+		summarizeBy: none
+		sourceColumn: LatestUpdateDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReportVersion
+		dataType: string
+		lineageTag: ba236cdd-9538-4095-8a0d-0e56db9d1480
+		summarizeBy: none
+		sourceColumn: ReportVersion
+
+		annotation SummarizationSetBy = Automatic
+
+	column ISC
+		dataType: string
+		lineageTag: 238797a9-4051-4e33-b539-e7d44db7d3a4
+		summarizeBy: none
+		sourceColumn: ISC
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'BIAbout vw_Info' = m
+		mode: import
+		queryGroup: 'Report Info'
+		source =
+				let
+				    Source = Sql.Database(Instances, "BIReporting"),
+				    BIAbout_vw_Info = Source{[Schema="BIAbout",Item="vw_Info"]}[Data],
+				    #"Inserted Merged Column" = Table.AddColumn(BIAbout_vw_Info, "ReportVersion", each Text.Combine({"Report - ", [CurrentVersion]}), type text),
+				    #"Inserted Merged Column1" = Table.AddColumn(#"Inserted Merged Column", "ISC", each Text.Combine({"Information Security Classification:", [ISCDescription]}), type text)
+				in
+				    #"Inserted Merged Column1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

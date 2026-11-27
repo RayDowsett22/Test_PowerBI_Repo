@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Event Register v3.0.0"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "2509bef1-f364-471e-bf31-db18357e2a1c"
+  }
+}

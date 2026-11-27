@@ -1,0 +1,37 @@
+table RAGOrder
+	lineageTag: af53f652-4cbf-4b7f-8294-a23f369f624a
+
+	column Order
+		dataType: int64
+		formatString: 0
+		lineageTag: da3ba66d-7e73-4688-9019-2af705ab7c64
+		summarizeBy: none
+		sourceColumn: Order
+
+		annotation SummarizationSetBy = Automatic
+
+	column RAG
+		dataType: string
+		lineageTag: e0ef29a8-4e9b-4c3f-96a9-20179112c1db
+		summarizeBy: none
+		sourceColumn: RAG
+		sortByColumn: Order
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	partition RAGOrder = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMlTSUXLKSUzOVorViVYyAvKCUlPAbGMg2zE3KbUIzDMB8tyLUlPzwDxTsK7SVKXYWAA=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Order = _t, RAG = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Order", Int64.Type}, {"RAG", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

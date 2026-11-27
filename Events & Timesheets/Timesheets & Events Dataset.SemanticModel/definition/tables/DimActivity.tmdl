@@ -1,0 +1,198 @@
+table DimActivity
+	lineageTag: 739bdcb4-9794-45d0-ab46-8fd419a9d007
+
+	column ActivityID
+		dataType: int64
+		formatString: 0
+		lineageTag: 2449fe66-0802-44ff-8744-649efb4c9dd3
+		summarizeBy: none
+		sourceColumn: ActivityID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ActivityCategoryID
+		dataType: int64
+		formatString: 0
+		lineageTag: 60d79ad2-51e1-4f84-8c93-47c4b9313b54
+		summarizeBy: count
+		sourceColumn: ActivityCategoryID
+
+		annotation SummarizationSetBy = Automatic
+
+	column InputCode
+		dataType: string
+		lineageTag: fe8f2fc0-4ad6-4a3c-82bf-ac810e555e47
+		summarizeBy: none
+		sourceColumn: InputCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column ActivityDescription
+		dataType: string
+		lineageTag: 4d121461-03a7-46e7-b829-14784e82ad0a
+		summarizeBy: none
+		sourceColumn: ActivityDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column Active
+		dataType: string
+		lineageTag: 57503f89-e662-4a18-9f13-cc7f11912813
+		summarizeBy: none
+		sourceColumn: Active
+
+		annotation SummarizationSetBy = Automatic
+
+	column InsertAuditID
+		dataType: int64
+		formatString: 0
+		lineageTag: 8d8e884a-50e6-4e7a-a5fa-9e8383fb1a57
+		summarizeBy: count
+		sourceColumn: InsertAuditID
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpdateAuditID
+		dataType: int64
+		formatString: 0
+		lineageTag: ffdb31b1-edf4-4d89-90f9-9ff0346a20da
+		summarizeBy: count
+		sourceColumn: UpdateAuditID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ActivityTypeID
+		dataType: int64
+		formatString: 0
+		lineageTag: 5623cde7-72a1-404d-9f11-e6d73d0cfde0
+		summarizeBy: none
+		sourceColumn: ActivityTypeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Payroll
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ec90a745-6587-4fe5-b0b3-62551903e7d3
+		summarizeBy: none
+		sourceColumn: Payroll
+
+		annotation SummarizationSetBy = Automatic
+
+	column Timesheet
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 0e828e73-6bf7-49a4-8a0a-e71e16c9329c
+		summarizeBy: none
+		sourceColumn: Timesheet
+
+		annotation SummarizationSetBy = Automatic
+
+	column Payroll-All
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 40e78091-59b8-4235-82e6-92d3385af7c1
+		summarizeBy: none
+		sourceColumn: Payroll-All
+
+		annotation SummarizationSetBy = Automatic
+
+	column Timesheet-All
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 1e76dda8-657e-4651-8121-b00ef0cd833f
+		summarizeBy: none
+		sourceColumn: Timesheet-All
+
+		annotation SummarizationSetBy = Automatic
+
+	column ConditionalFormatAll =
+			
+			IF (
+			    DimActivity[Payroll] = TRUE ()
+			        && DimActivity[Payroll-All] = TRUE (),
+			    "#f29a39",
+			    IF (
+			        DimActivity[Timesheet] = TRUE ()
+			            && DimActivity[Timesheet-All] = TRUE (),
+			        "#f29a39",
+			        IF (
+			            DimActivity[Payroll] = FALSE ()
+			                && DimActivity[Payroll-All] = TRUE (),
+			            "#0179dd",
+			            IF (
+			                DimActivity[Timesheet] = FALSE ()
+			                    && DimActivity[Timesheet-All] = TRUE (),
+			                "#0179dd",
+			                "#f29a39"
+			            )
+			        )
+			    )
+			)
+		displayFolder: 2. Calculated Columns
+		lineageTag: 3446ff3b-f650-46de-ad30-67560ed0e7d6
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column ConditionalFormatPayroll =
+			
+			IF (
+			    DimActivity[Payroll] = TRUE ()
+			        && DimActivity[Payroll-All] = TRUE (),
+			    "#f29a39",
+			    IF (
+			        DimActivity[Payroll] = FALSE ()
+			            && DimActivity[Payroll-All] = TRUE (),
+			        "#0179dd",
+			        "#000000"
+			    )
+			)
+		displayFolder: 2. Calculated Columns
+		lineageTag: c6497f43-2435-41c2-b7a3-62589ac30c24
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column ConditionalFormatTimesheet =
+			
+			IF (
+			    DimActivity[Timesheet] = TRUE ()
+			        && DimActivity[Timesheet-All] = TRUE (),
+			    "#f29a39",
+			    IF (
+			        DimActivity[Timesheet] = FALSE ()
+			            && DimActivity[Timesheet-All] = TRUE (),
+			        "#0179dd",
+			        "#000000"
+			    )
+			)
+		displayFolder: 2. Calculated Columns
+		lineageTag: 1b74d7dd-9807-445e-8c3d-f1dfcbdc73b5
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Input Description'
+		dataType: string
+		lineageTag: bbbfb4c7-e122-429c-afc9-b1633274cf87
+		summarizeBy: none
+		sourceColumn: Input Description
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimActivity = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				    Source = Sql.Database(Instances, "JNBDW"),
+				    dbo_DimActivity = Source{[Schema="dbo",Item="DimActivity"]}[Data],
+				    #"Added Conditional Column" = Table.AddColumn(dbo_DimActivity, "Input Description", each if [ActivityID] = 1088 then "Site Visitor Hours" else [ActivityDescription])
+				in
+				    #"Added Conditional Column"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

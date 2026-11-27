@@ -1,0 +1,44 @@
+table 'POS - Unpivot'
+	lineageTag: a494e8b4-a0b6-4702-b29b-484c4b82f512
+
+	column ProjectID
+		dataType: int64
+		formatString: 0
+		lineageTag: 7d4ee7fe-cb1d-4706-92d4-4ba6b49c9deb
+		summarizeBy: none
+		sourceColumn: ProjectID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Role
+		dataType: string
+		lineageTag: ba9ac78e-04c4-449e-b818-a0b3a8b33998
+		summarizeBy: none
+		sourceColumn: Role
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value
+		dataType: string
+		lineageTag: d7aa91b6-7703-478d-8e9f-d530d6c8cd2c
+		summarizeBy: none
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'POS - Unpivot' = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				    Source = #"POS",
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"ProjectID", "ClientName", "CommercialManager", "ContractsManager", "DesignManager", "Director", "OperationsManager", "QuantitySurveyor", "SiteAgent", "Unit"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Other Columns",{{"ClientName", "Client"}, {"CommercialManager", "Commercial Manager"}, {"ContractsManager", "Contracts Manager"}, {"DesignManager", "Design Manager"}, {"OperationsManager", "Operations Manager"}, {"QuantitySurveyor", "Quantity Surveyor"}, {"SiteAgent", "Site Agent"}}),
+				    #"Unpivoted Other Columns" = Table.UnpivotOtherColumns(#"Renamed Columns", {"ProjectID"}, "Role", "Value")
+				in
+				    #"Unpivoted Other Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
