@@ -1,0 +1,187 @@
+table FactEventActionResponseCarbonSummary
+	lineageTag: 0324c8a5-5c7a-40dc-a13d-764ed60718d8
+
+	measure 'Exact CO2 Added' = ```
+			
+			CALCULATE(
+			    SUM(FactEventActionResponseCarbonSummary[ExactCO2]),
+			    FILTER(
+			        FactEventActionResponseCarbonSummary,
+			        FactEventActionResponseCarbonSummary[CO2Factor] =1
+			    )
+			)
+			
+			```
+		displayFolder: 1. Measures
+		lineageTag: 26101fa2-f156-437b-82ac-542550c8a95a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Exact CO2 Impact' =
+			
+			[Exact CO2 Added]-[Exact CO2 Saved]
+		displayFolder: 1. Measures
+		lineageTag: e0b41ba7-fc8d-419f-9b97-48cead66448e
+
+	measure 'Exact CO2 Saved' =
+			
+			CALCULATE(
+			    SUM(FactEventActionResponseCarbonSummary[ExactCO2]),
+			    FILTER(
+			        FactEventActionResponseCarbonSummary,
+			        FactEventActionResponseCarbonSummary[CO2Factor] =-1
+			    )
+			)
+		displayFolder: 1. Measures
+		lineageTag: 6787efb2-ee9e-43f2-afa6-e9e6adad9774
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '>10 Tonnes CO2e Added' =
+			//>10 tonnes CO2
+			        CALCULATE(SUM(FactEventActionResponseCarbonSummary[CO2_10]), FILTER(FactEventActionResponseCarbonSummary,FactEventActionResponseCarbonSummary[CO2Factor]>0))
+		formatString: 0
+		displayFolder: 1. Measures
+		lineageTag: aeefb2d5-cd59-49a8-87a1-98aa0596edcf
+
+	measure '>10 Tonnes CO2e Saved' =
+			//>10 tonnes CO2
+			        CALCULATE(SUM(FactEventActionResponseCarbonSummary[CO2_10]), FactEventActionResponseCarbonSummary[CO2Factor]<0)
+		formatString: 0
+		displayFolder: 1. Measures
+		lineageTag: 18e3f4d6-8060-405c-b3e4-a95107121d76
+
+	measure '0-1 Tonnes CO2e Added' =
+			//0-1 tonnes CO2 saved
+			        CALCULATE(SUM(FactEventActionResponseCarbonSummary[CO2_0_1]), FactEventActionResponseCarbonSummary[CO2Factor]>0)
+		formatString: 0
+		displayFolder: 1. Measures
+		lineageTag: 44873e99-d1b6-4b76-8148-b55679de5aa0
+
+	measure '0-1 Tonnes CO2e Saved' =
+			//0-1 tonnes CO2 added
+			        CALCULATE(SUM(FactEventActionResponseCarbonSummary[CO2_0_1]), FactEventActionResponseCarbonSummary[CO2Factor]<0)
+		formatString: 0
+		displayFolder: 1. Measures
+		lineageTag: ccf88073-9e42-4589-b8d5-983f90c761c6
+
+	measure '1-10 Tonnes CO2e Added' =
+			//1-10 tonnes CO2
+			            CALCULATE(SUM(FactEventActionResponseCarbonSummary[CO2_1_10]), FactEventActionResponseCarbonSummary[CO2Factor]>0)
+		formatString: 0
+		displayFolder: 1. Measures
+		lineageTag: f634fa15-7cd2-4cc4-91a3-784383955a6f
+
+	measure '1-10 Tonnes CO2e Saved' =
+			//1-10 tonnes CO2
+			            CALCULATE(SUM(FactEventActionResponseCarbonSummary[CO2_1_10]), FactEventActionResponseCarbonSummary[CO2Factor]<0)
+		formatString: 0
+		displayFolder: 1. Measures
+		lineageTag: b53ad438-075b-4167-a655-73caf38c1adc
+
+	measure CO2Added = ```
+			
+			            [0-1 Tonnes CO2e Added] +
+			            [1-10 Tonnes CO2e Added] +
+			            [>10 Tonnes CO2e Added]
+			```
+		formatString: 0
+		displayFolder: 1. Measures
+		lineageTag: b274d5f3-3867-4504-81f7-879d6536a7f4
+
+	measure CO2Saved = ```
+			
+			        [0-1 Tonnes CO2e Saved] +
+			        [1-10 Tonnes CO2e Saved] +
+			        [>10 Tonnes CO2e Saved]
+			```
+		formatString: 0
+		displayFolder: 1. Measures
+		lineageTag: 4cfd9fe7-7f30-4ac9-a972-721a7d507824
+
+	column EventID
+		dataType: int64
+		formatString: 0
+		lineageTag: bf547833-5ef5-4d01-a70b-eabf46c5a34b
+		summarizeBy: none
+		sourceColumn: EventID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO2Event
+		dataType: int64
+		formatString: 0
+		lineageTag: d8301709-3410-46d9-a99a-a40b09f7cfda
+		summarizeBy: sum
+		sourceColumn: CO2Event
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO2Factor
+		dataType: int64
+		formatString: 0
+		lineageTag: 1fee86b6-f3b9-4efb-b12d-86f45b08705f
+		summarizeBy: sum
+		sourceColumn: CO2Factor
+
+		annotation SummarizationSetBy = Automatic
+
+	column AddedSaved
+		dataType: string
+		lineageTag: d5700a31-72d9-470b-8421-d9c9df189b02
+		summarizeBy: none
+		sourceColumn: AddedSaved
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO2_0_1
+		dataType: int64
+		formatString: 0
+		lineageTag: d13eb8b5-6021-4ca5-a1af-128a861efba8
+		summarizeBy: sum
+		sourceColumn: CO2_0_1
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO2_1_10
+		dataType: int64
+		formatString: 0
+		lineageTag: 0ae11a7c-ac6f-404a-9a35-0754fa0fe7fc
+		summarizeBy: sum
+		sourceColumn: CO2_1_10
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO2_10
+		dataType: int64
+		formatString: 0
+		lineageTag: b5c9a9e2-6175-469a-b165-d72270c8e036
+		summarizeBy: sum
+		sourceColumn: CO2_10
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExactCO2
+		dataType: double
+		lineageTag: 17bb82fe-caa5-4391-9acb-0beda2ed6f4e
+		summarizeBy: sum
+		sourceColumn: ExactCO2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition FactEventActionResponseCarbonSummary = m
+		mode: import
+		queryGroup: Facts
+		source =
+				let
+				    Source = Sql.Database(Instances, "JNBDW", [Query="-- Retrieve CO2 impact information for each event#(lf)SELECT ER.[EventID]#(lf)#(lf)      -- Flag events where a CO2 tonnage response has been provided#(lf)      ,SUM(CASE WHEN TC.[EventID] IS NOT NULL THEN 1 ELSE 0 END) AS [CO2Event]#(lf)#(lf)      -- Identify whether carbon was added or saved#(lf)      ,CASE WHEN IY.[Answer] = 'Carbon Added' THEN 1#(lf)                   WHEN IY.[Answer] = 'Carbon Saved' THEN -1#(lf)                   ELSE 0 END [CO2Factor]#(lf)      ,CASE WHEN IY.[Answer] = 'Carbon Added' THEN 'Added'#(lf)                   WHEN IY.[Answer] = 'Carbon Saved' THEN 'Saved'#(lf)                   ELSE 'xxx' END [AddedSaved]#(lf)#(lf)        -- Categorise the reported CO2 tonnage into ranges#(lf)        ,SUM(CASE WHEN TC.[Answer] = '0-1 Tonnes of CO2e' THEN 1 ELSE 0 END) [CO2_0_1]#(lf)        ,SUM(CASE WHEN TC.[Answer] = '1-10 Tonnes of CO2e' THEN 1 ELSE 0 END) [CO2_1_10]#(lf)        ,SUM(CASE WHEN TC.[Answer] = '>10 Tonnes of CO2e' THEN 1 ELSE 0 END) [CO2_10]#(lf)#(lf)        -- Capture the exact CO2 tonnage where provided#(lf)        ,SUM(CASE WHEN ETC.[EventID] IS NOT NULL THEN CAST(ETC.[Answer] AS DECIMAL(10, 3)) END) AS [ExactCO2]#(lf)#(lf)FROM [JNBDW].[dbo].[FactEventRegister] ER INNER JOIN#(lf)            [JNBDW].[dbo].[DimDate] D ON D.[DateID] = ER.[Datekey] INNER JOIN#(lf)            [JNBDW].[dbo].[DimEventType] ET ON ET.[EventTypeID] = ER.[EventTypeID] INNER JOIN#(lf)#(lf)            -- Only include events confirmed as having a carbon impact#(lf)            [JNBDW].[dbo].[FactEventActionResponse] CI ON CI.[EventID] = ER.[EventID] AND (CI.[LogDeleted] = 0 OR CI.[LogDeleted] IS NULL) AND (CI.[Question] = 'Carbon Impact' AND CI.[Answer] = 'Yes') LEFT OUTER JOIN#(lf)#(lf)            -- Retrieve whether the carbon impact was added or saved#(lf)            [JNBDW].[dbo].[FactEventActionResponse] IY ON IY.[EventID] = ER.[EventID] AND (IY.[LogDeleted] = 0 OR IY.[LogDeleted] IS NULL) AND IY.[Question] = 'If Yes' LEFT OUTER JOIN#(lf)#(lf)            -- Retrieve the CO2 tonnage range#(lf)            [JNBDW].[dbo].[FactEventActionResponse] TC ON TC.[EventID] = ER.[EventID] AND (TC.[LogDeleted] = 0 OR TC.[LogDeleted] IS NULL) AND TC.[Question] = 'Tonnes CO2' LEFT OUTER JOIN#(lf)#(lf)            -- Retrieve the exact CO2 tonnage where known#(lf)            [JNBDW].[dbo].[FactEventActionResponse] ETC ON ETC.[EventID] = ER.[EventID] AND (ETC.[LogDeleted] = 0 OR ETC.[LogDeleted] IS NULL) AND ETC.[Question] = 'Exact Tonnes CO2e (if known)'#(lf)#(lf)-- Include non-deleted QC&Event records from the current and previous 36 months#(lf)WHERE (ER.[LogDeleted] = 0 OR ER.[LogDeleted] IS NULL) AND ET.[EventTypeDescription] = 'QC&Event' AND D.[MonthOffset] BETWEEN -36 AND 0#(lf)#(lf)-- Return one result per event and carbon added/saved response#(lf)GROUP BY ER.[EventID]#(lf)                  ,IY.[Answer]"]),
+				    #"Filtered Rows" = Table.SelectRows(Source, each ([AddedSaved] <> "xxx"))
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

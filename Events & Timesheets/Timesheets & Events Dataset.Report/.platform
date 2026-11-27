@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Timesheets & Events Dataset"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "8cb57afe-9f38-4d3a-ad75-5736756dbcb4"
+  }
+}

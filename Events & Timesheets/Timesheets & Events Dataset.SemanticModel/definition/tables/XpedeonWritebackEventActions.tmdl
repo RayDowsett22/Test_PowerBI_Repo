@@ -1,0 +1,259 @@
+table XpedeonWritebackEventActions
+	lineageTag: 5265e698-db9c-4634-9442-a181ad9d4d10
+
+	column KeyID
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: ea81bf47-cb70-4386-8062-ef1ad9038ac3
+		summarizeBy: count
+		sourceColumn: KeyID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Source
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(1)
+		lineageTag: da303458-4ee5-4926-97da-822001a63333
+		summarizeBy: none
+		sourceColumn: Source
+
+		annotation SummarizationSetBy = Automatic
+
+	column DocRef
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(50)
+		lineageTag: bc2444c6-1d13-46d8-8441-0098f98c9cb6
+		summarizeBy: none
+		sourceColumn: DocRef
+
+		annotation SummarizationSetBy = Automatic
+
+	column DocGUID
+		dataType: double
+		isNullable: false
+		sourceProviderType: decimal(20, 0)
+		lineageTag: 00bc4af1-1fc7-46d5-b9ee-925f793cd756
+		summarizeBy: count
+		sourceColumn: DocGUID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ResponseID
+		dataType: double
+		isNullable: false
+		sourceProviderType: decimal(30, 0)
+		lineageTag: 87157969-f82d-4e01-bfca-120926794244
+		summarizeBy: none
+		sourceColumn: ResponseID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ActionID
+		dataType: double
+		isNullable: false
+		sourceProviderType: decimal(20, 0)
+		lineageTag: 61f3f7fd-58c0-4e6f-88b8-3241fae57327
+		summarizeBy: count
+		sourceColumn: ActionID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Project
+		dataType: string
+		sourceProviderType: varchar(30)
+		lineageTag: 06665607-bab2-466b-bb6c-ce6511cdc3e9
+		summarizeBy: none
+		sourceColumn: Project
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Current Owner'
+		dataType: string
+		sourceProviderType: varchar(30)
+		lineageTag: bca81c55-a694-4bd7-8db5-b5af919fe8b0
+		summarizeBy: none
+		sourceColumn: Current Owner
+
+		annotation SummarizationSetBy = Automatic
+
+	column ActionRequired
+		dataType: string
+		sourceProviderType: varchar(300)
+		lineageTag: c7d7c571-ab11-405e-a7a2-6e23373e854c
+		summarizeBy: none
+		sourceColumn: ActionRequired
+
+		annotation SummarizationSetBy = Automatic
+
+	column ActionNotes
+		dataType: string
+		sourceProviderType: varchar(300)
+		lineageTag: 7170bfcd-cde1-447f-af04-391d17eebf30
+		summarizeBy: none
+		sourceColumn: ActionNotes
+
+		annotation SummarizationSetBy = Automatic
+
+	column InProgressNotes
+		dataType: string
+		sourceProviderType: varchar(300)
+		lineageTag: 4e2a3e1e-8f62-4042-b308-3bd665152d04
+		summarizeBy: none
+		sourceColumn: InProgressNotes
+
+		annotation SummarizationSetBy = Automatic
+
+	column ActionOpened
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: smalldatetime
+		lineageTag: 5d20400d-bc6a-4c24-b1fa-acb5a8de7fd6
+		summarizeBy: none
+		sourceColumn: ActionOpened
+
+		annotation SummarizationSetBy = Automatic
+
+	column ActionClosed
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: smalldatetime
+		lineageTag: 1893daae-8aad-4315-b5f6-a796200ac91a
+		summarizeBy: none
+		sourceColumn: ActionClosed
+
+		annotation SummarizationSetBy = Automatic
+
+	column ActionCompleted
+		dataType: string
+		isNullable: false
+		sourceProviderType: char
+		lineageTag: feecd48a-a86b-4219-84d2-f240aaaa9243
+		summarizeBy: none
+		sourceColumn: ActionCompleted
+
+		annotation SummarizationSetBy = Automatic
+
+	column ActionCompletedFormat
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 62ac92e2-7401-4f90-baeb-11cd1c9ff9ca
+		summarizeBy: sum
+		sourceColumn: ActionCompletedFormat
+
+		annotation SummarizationSetBy = Automatic
+
+	column Comment
+		dataType: string
+		sourceProviderType: varchar(255)
+		lineageTag: 3bccb194-cc52-4b0c-be34-6ba1d5e31943
+		summarizeBy: none
+		sourceColumn: Comment
+
+		annotation SummarizationSetBy = Automatic
+
+	column Processed
+		dataType: string
+		sourceProviderType: char
+		lineageTag: fb4b31bb-ade5-476b-a44a-1fcacbe04c9e
+		summarizeBy: none
+		sourceColumn: Processed
+
+		annotation SummarizationSetBy = Automatic
+
+	column ModifiedBy
+		dataType: string
+		sourceProviderType: nvarchar(125)
+		lineageTag: 8418c294-9b93-4fc0-b363-ed2f8a52f9c1
+		summarizeBy: none
+		sourceColumn: ModifiedBy
+
+		annotation SummarizationSetBy = Automatic
+
+	column ModifiedDate
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: smalldatetime
+		lineageTag: 0daa0b32-38c0-46f5-a108-85eeeb04918d
+		summarizeBy: none
+		sourceColumn: ModifiedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column ActionStatus
+		dataType: string
+		sourceProviderType: char
+		lineageTag: 387999dc-3b05-4279-86c4-6182ec1ce805
+		summarizeBy: none
+		sourceColumn: ActionStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column InProgressFormat
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 46bab269-2e33-4d12-afdf-d95b6a72247d
+		summarizeBy: sum
+		sourceColumn: InProgressFormat
+
+		annotation SummarizationSetBy = Automatic
+
+	column ActionNotesFormat
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: a53e8fc7-33c5-416d-a4ac-a51df8e2f4f0
+		summarizeBy: sum
+		sourceColumn: ActionNotesFormat
+
+		annotation SummarizationSetBy = Automatic
+
+	column ActionReqFormat
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: e65e08cb-cff4-4575-b0c5-2a515b9684be
+		summarizeBy: sum
+		sourceColumn: ActionReqFormat
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProcessedDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 4d638bad-9df4-4077-9d13-e7b60a299dcb
+		summarizeBy: none
+		sourceColumn: ProcessedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	partition XpedeonWritebackEventActions = m
+		mode: directQuery
+		queryGroup: Facts
+		source =
+				let
+				    Source = Sql.Database(Instances, "BIReporting"),
+				    XpedeonWriteBack_EventActions = Source{[Schema="XpedeonWriteBack",Item="EventActions"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(XpedeonWriteBack_EventActions,{{"ActionBy", "Current Owner"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

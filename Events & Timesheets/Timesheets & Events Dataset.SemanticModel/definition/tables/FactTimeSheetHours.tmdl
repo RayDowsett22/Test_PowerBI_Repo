@@ -1,0 +1,413 @@
+table FactTimeSheetHours
+	lineageTag: 4de1383e-3ef3-42d1-8331-bc4805c364ed
+
+	measure 'Hours (ALL)' =
+			
+			/* RD 29/10/2026
+			Timesheet and Attendance Hours
+			*/
+			VAR TimesheetAll =
+			    SELECTEDVALUE ( DimActivity[Timesheet-All] )
+			VAR PayrollAll =
+			    SELECTEDVALUE ( DimActivity[Payroll-All] )
+			RETURN
+			    SWITCH (
+			        TRUE (),
+			        TimesheetAll = TRUE (), SUM ( FactTimeSheetHours[OriginalHours] ),
+			        PayrollAll = TRUE (), SUM ( FactTimeSheetHours[OriginalHours] )
+			    )
+		displayFolder: 1. Measures
+		lineageTag: 124ae2a3-f58c-4810-9d5e-4d1de0e5d287
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Hours =
+			
+			/* RD 29/10/2026
+			Timesheet and Attendance Hours
+			*/
+			VAR Timesheet =
+			    SELECTEDVALUE ( DimActivity[Timesheet] )
+			VAR Payroll =
+			    SELECTEDVALUE ( DimActivity[Payroll] )
+			RETURN
+			    SWITCH (
+			        TRUE (),
+			        Timesheet = TRUE (), SUM ( FactTimeSheetHours[TimesheetHours] ),
+			        Payroll = TRUE (), SUM ( FactTimeSheetHours[PayrollHours])
+			    )
+		displayFolder: 1. Measures
+		lineageTag: e8ebb1fb-28a1-403c-bd31-7a42768f07fc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'External Hours' = CALCULATE([Hours],FILTER(DimDesignation,DimDesignation[DesignationDescription]="Undefined"),FILTER(DimEntityType,DimEntityType[ReportedByCategory]<>"Other"))
+		displayFolder: 1. Measures
+		lineageTag: 6e0ab68e-cced-4395-8610-b4e9707104da
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'External Hours Est Cost' = [External Hours]*130
+		displayFolder: 1. Measures
+		lineageTag: 2b7c8a50-8cb6-4874-81c0-a59874b6f48f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Hours + 0' = [Hours] + 0
+		displayFolder: 1. Measures
+		lineageTag: 27263f20-2420-4255-a123-ba6472a77179
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Hours %' = DIVIDE([Hours],[Hours (All Designation)])
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 1. Measures
+		lineageTag: af75178e-a941-471f-bac9-784b2ed42096
+
+	measure 'Hours (All Designation)' = CALCULATE([Hours],ALL(DimDesignation[DesignationDescription]))
+		displayFolder: 1. Measures
+		lineageTag: 54b29c9a-7ece-4cf3-b1d9-2f3e6303af04
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Hours - Company' = ```
+			
+			/* DOCUMENTATION *
+			If report is by project full name then get company total for all projcets.
+			If report is by Entity name then get company total for all users.
+			Note this measure is field name specific and will not work for other fields like projcet code.
+			But you can amend it if necessary.
+			*/
+			SWITCH(TRUE(),
+			
+			    ISFILTERED(POS[Project Full]) = TRUE(), 
+			        CALCULATE(
+			        [Hours],
+			        ALL(POS)
+			        ),
+			
+			    ISFILTERED(DimReportedBy[ShortName]) = TRUE(), 
+			        CALCULATE(
+			        [Hours],
+			        ALL(DimReportedBy)
+			        ),
+			
+			    ISFILTERED('POS - Unpivot'[Value]) = TRUE(), 
+			        CALCULATE(
+			        [Hours],
+			        ALL('POS - Unpivot')
+			        ),
+			
+			    [Hours]
+			)
+			```
+		displayFolder: 1. Measures
+		lineageTag: a8203d44-33ad-4491-b321-e1764a0b7640
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Hours (ALL) (All Designation)' = CALCULATE([Hours (ALL)],ALL(DimDesignation[DesignationDescription]))
+		displayFolder: 1. Measures
+		lineageTag: efc1ef71-7efe-4663-b869-66b938639add
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Hours (ALL) %' = DIVIDE([Hours (ALL)],[Hours (ALL) (All Designation)])
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 1. Measures
+		lineageTag: 2e0ba684-2060-43bc-9e2c-3e5c7c6f76fa
+
+	measure 'External Hours (ALL)' = CALCULATE([Hours (ALL)],FILTER(DimDesignation,DimDesignation[DesignationDescription]="Undefined"),FILTER(DimEntityType,DimEntityType[ReportedByCategory]<>"Other"))
+		displayFolder: 1. Measures
+		lineageTag: b5df352d-3095-462b-af29-2d2b42df4994
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'External Hours Est Cost (ALL)' = [External Hours (ALL)]*130
+		formatString: "£"#,0.00;-"£"#,0.00;"£"#,0.00
+		displayFolder: 1. Measures
+		lineageTag: 56ffec38-51ef-4892-8868-dd09cec30b8c
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure 'Hours (ALL) + 0' = [Hours (ALL)] + 0
+		displayFolder: 1. Measures
+		lineageTag: 95807874-3fc8-41d0-84fa-3bb11ea372ec
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TimeSheetHoursID
+		dataType: int64
+		formatString: 0
+		lineageTag: 966196ee-63e0-4e6e-a3c9-21718c81a369
+		summarizeBy: count
+		sourceColumn: TimeSheetHoursID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SourceId
+		dataType: int64
+		formatString: 0
+		lineageTag: bf2391e8-dd9b-4d3a-ba68-80661ad0158d
+		summarizeBy: count
+		sourceColumn: SourceId
+
+		annotation SummarizationSetBy = Automatic
+
+	column LineGUID
+		dataType: double
+		lineageTag: 83b02a67-b231-445e-a04a-ec2e6c98b31c
+		summarizeBy: count
+		sourceColumn: LineGUID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column HDRDocGUID
+		dataType: double
+		lineageTag: a8169efc-9d08-4a57-bb12-933282a2ffee
+		summarizeBy: count
+		sourceColumn: HDRDocGUID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EntityID
+		dataType: int64
+		formatString: 0
+		lineageTag: 1fce8758-ff98-439b-ac69-7b0ff3effbf7
+		summarizeBy: none
+		sourceColumn: EntityID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TimeSheetDateID
+		dataType: int64
+		formatString: 0
+		lineageTag: 1635fada-62e2-4b56-b6b1-3fe81f4be9df
+		summarizeBy: none
+		sourceColumn: TimeSheetDateID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProjectID
+		dataType: int64
+		formatString: 0
+		lineageTag: 18a88276-0ad2-4913-8aa2-94f1ad4e7c7c
+		summarizeBy: none
+		sourceColumn: ProjectID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OriginalHours
+		dataType: double
+		lineageTag: 2749cacf-218b-45f1-ab6a-641382cac2a7
+		summarizeBy: sum
+		sourceColumn: OriginalHours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TimeSheet46HourRule
+		dataType: double
+		lineageTag: 7f6da4b3-bf96-4a70-b6c0-fbb7bd923240
+		summarizeBy: sum
+		sourceColumn: TimeSheet46HourRule
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ActivityID
+		dataType: int64
+		formatString: 0
+		lineageTag: 6a28df34-63cb-4b94-93dd-ea87ee7fb728
+		summarizeBy: none
+		sourceColumn: ActivityID
+
+		annotation SummarizationSetBy = Automatic
+
+	column InsertAuditID
+		dataType: int64
+		formatString: 0
+		lineageTag: 91b948c6-9b0e-4ebd-bb77-ee182c7d3ce7
+		summarizeBy: count
+		sourceColumn: InsertAuditID
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpdateAuditID
+		dataType: int64
+		formatString: 0
+		lineageTag: 85eb1fed-fe84-4f11-80fb-b1c25987f541
+		summarizeBy: count
+		sourceColumn: UpdateAuditID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SectionIDValue
+		dataType: double
+		lineageTag: 400c5550-cd15-46f9-8835-5be6ae7762b4
+		summarizeBy: sum
+		sourceColumn: SectionIDValue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SubType
+		dataType: string
+		lineageTag: 47eb7e98-ba13-4bb2-8897-c9eaf33a670e
+		summarizeBy: none
+		sourceColumn: SubType
+
+		annotation SummarizationSetBy = Automatic
+
+	column LogDeleted
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d7634372-2d42-4dca-8e79-2dc177aa7d3f
+		summarizeBy: none
+		sourceColumn: LogDeleted
+
+		annotation SummarizationSetBy = Automatic
+
+	column BACK_PAY
+		dataType: string
+		lineageTag: f1ba3439-3680-40a9-ab3a-20b88eb393d2
+		summarizeBy: none
+		sourceColumn: BACK_PAY
+
+		annotation SummarizationSetBy = Automatic
+
+	column BACK_PAY_ENTERED_IN_TS_START_DATE
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4c16daac-7f1b-429e-b570-230b9b05401f
+		summarizeBy: none
+		sourceColumn: BACK_PAY_ENTERED_IN_TS_START_DATE
+
+		variation Variation
+			isDefault
+			relationship: 3bc4996c-5e79-4a57-a030-63cc18360055
+			defaultHierarchy: LocalDateTable_e182b04e-de0f-4418-8bde-af252323610b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Division
+		dataType: string
+		lineageTag: a13cdedd-9245-4912-b5b5-6809cca2a643
+		summarizeBy: none
+		sourceColumn: Division
+
+		annotation SummarizationSetBy = Automatic
+
+	column RateToApply
+		dataType: double
+		lineageTag: 3bc9c56c-809a-4dea-bd7d-495642a319ef
+		summarizeBy: sum
+		sourceColumn: RateToApply
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column isCorrection
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b6d31636-3c4c-4227-b242-28ea9eb58cfb
+		summarizeBy: none
+		sourceColumn: isCorrection
+
+		annotation SummarizationSetBy = Automatic
+
+	column Payroll
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d36b6eee-e361-45c5-8f68-df694fee4767
+		summarizeBy: none
+		sourceColumn: Payroll
+
+		annotation SummarizationSetBy = Automatic
+
+	column '8.5Rule'
+		dataType: int64
+		formatString: 0
+		lineageTag: e8c76355-3acc-46eb-9a9c-78bf3b8afaaa
+		summarizeBy: sum
+		sourceColumn: 8.5Rule
+
+		annotation SummarizationSetBy = Automatic
+
+	column PayrollHours
+		dataType: double
+		lineageTag: 746c7e07-eabe-4c48-99c3-7981b038341f
+		summarizeBy: sum
+		sourceColumn: PayrollHours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Timesheet
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 55b2613f-6aea-425d-acaa-02f88cf1dcec
+		summarizeBy: none
+		sourceColumn: Timesheet
+
+		annotation SummarizationSetBy = Automatic
+
+	column 46HourRule
+		dataType: int64
+		formatString: 0
+		lineageTag: 301fc856-cb37-4ddb-a7aa-4f8f08232b33
+		summarizeBy: sum
+		sourceColumn: 46HourRule
+
+		annotation SummarizationSetBy = Automatic
+
+	column TimesheetHours
+		dataType: double
+		lineageTag: 9fbe8a65-9cc2-4eb7-8510-61b6b682f310
+		summarizeBy: sum
+		sourceColumn: TimesheetHours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Timesheet-All
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4d6d8b3e-751a-46a8-8ada-6224999ea6e4
+		summarizeBy: none
+		sourceColumn: Timesheet-All
+
+		annotation SummarizationSetBy = Automatic
+
+	column Payroll-All
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 70270010-6158-4c07-bb6c-027376912904
+		summarizeBy: none
+		sourceColumn: Payroll-All
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactTimeSheetHours = m
+		mode: import
+		queryGroup: Facts
+		source =
+				let
+				    Source = Sql.Database(Instances, "JNBDW", [Query="-- Calculate weekly hours for activities subject to the 8.5-hour rule#(lf)WITH NPP AS(#(lf)SELECT [EntityID]#(lf)            ,[WeekEndDate]#(lf)            ,SUM([TimeSheetHours]) AS [Hours]#(lf)            -- Flag where the employee's weekly total is 8.5 hours or less#(lf)            ,CASE WHEN SUM([TimeSheetHours]) <= 8.5 THEN 1 ELSE 0 END AS [8.5Rule]#(lf)FROM (SELECT T.[EntityID]#(lf)                        ,D.[WeekEndDate]#(lf)                        ,T.[TimeSheetHours]#(lf)                        ,T.LogDeleted#(lf)           FROM [JNBDW].[dbo].[FactTimeSheetHours] T INNER JOIN#(lf)                      [JNBDW].[dbo].[DimDate] D ON T.[TimeSheetDateID] = D.[DateID]#(lf)           WHERE (T.[ActivityID] IN (1017, 1018))) NP#(lf)WHERE [LogDeleted] IS NULL OR [LogDeleted] = 0#(lf)GROUP BY [EntityID]#(lf)                 ,[WeekEndDate]),#(lf) #(lf)-- Calculate weekly hours for activities subject to the 46-hour rule#(lf)HR AS(#(lf)SELECT [EntityID]#(lf)            ,[WeekEndDate]#(lf)            ,SUM([TimeSheetHours]) AS [Hours]#(lf)            -- Flag where the employee's weekly total is 46 hours or less#(lf)            ,CASE WHEN SUM([TimeSheetHours]) <= 46 THEN 1 ELSE 0 END AS [46HourRule]#(lf)FROM (SELECT T.[EntityID]#(lf)                        ,D.[WeekEndDate]#(lf)                        ,T.[TimeSheetHours]#(lf)                        ,T.LogDeleted#(lf)            FROM [JNBDW].[dbo].[FactTimeSheetHours] T INNER JOIN#(lf)                       [JNBDW].[dbo].[DimDate] D ON T.[TimeSheetDateID] = D.[DateID]#(lf)            WHERE T.[ActivityID] = 1061) PHR#(lf)WHERE [LogDeleted] IS NULL OR [LogDeleted] = 0#(lf)GROUP BY [EntityID]#(lf)                  ,[WeekEndDate])#(lf) #(lf)-- Retrieve timesheet records with payroll and timesheet rule adjustments#(lf)SELECT T.TimeSheetHoursID#(lf)            ,T.SourceId#(lf)            ,T.LineGUID#(lf)            ,T.HDRDocGUID#(lf)            ,T.EntityID#(lf)            ,T.TimeSheetDateID#(lf)            ,T.ProjectID#(lf)            ,T.TimeSheetHours OriginalHours#(lf)            ,T.TimeSheet46HourRule#(lf)            ,T.ActivityID#(lf)            ,T.InsertAuditID#(lf)            ,T.UpdateAuditID#(lf)            ,T.SectionIDValue#(lf)            ,T.SubType#(lf)            ,T.LogDeleted#(lf)            ,T.BACK_PAY#(lf)            ,T.BACK_PAY_ENTERED_IN_TS_START_DATE#(lf)            ,T.Division#(lf)            ,T.RateToApply#(lf)            ,T.isCorrection#(lf)            ,A.[Timesheet-All]#(lf)            ,A.[Payroll-All]#(lf)            ,A.[Payroll]#(lf)#(lf)            -- Apply the 8.5-hour rule to calculate payroll hours#(lf)            ,ISNULL(NPP.[8.5Rule], 0) AS [8.5Rule]#(lf)            ,CASE WHEN ISNULL(NPP.[8.5Rule], 0) = 1 THEN T.TimeSheetHours#(lf)                  WHEN T.ActivityID IN (1021, 1037) THEN 0#(lf)                  ELSE T.TimeSheetHours END [PayrollHours]#(lf)#(lf)            ,A.[Timesheet]#(lf)#(lf)            -- Apply the 46-hour rule to calculate timesheet hours#(lf)            ,ISNULL(HR.[46HourRule], 0) AS [46HourRule]#(lf)            ,CASE WHEN ISNULL(HR.[46HourRule], 0) = 1 THEN T.TimeSheetHours#(lf)                  WHEN T.ActivityID IN (1070, 1063) THEN 0#(lf)                  ELSE T.TimeSheetHours END [TimesheetHours]#(lf)#(lf)FROM [JNBDW].[dbo].[FactTimeSheetHours] T INNER JOIN#(lf)           [JNBDW].[dbo].[DimDate] D ON T.[TimeSheetDateID] = D.[DateID] INNER JOIN#(lf)           [JNBDW].[dbo].[DimActivity] A ON A.[ActivityID] = T.[ActivityID] LEFT OUTER JOIN#(lf)           NPP ON NPP.[EntityID] = T.[EntityID] AND   NPP.[WeekEndDate] = D.[WeekEndDate] LEFT OUTER JOIN#(lf)           HR ON HR.[EntityID] = T.[EntityID] AND HR.[WeekEndDate] = D.[WeekEndDate]#(lf)#(lf)-- Include non-deleted timesheet records from the current and previous 36 months#(lf)WHERE (T.LogDeleted IS NULL OR T.LogDeleted = 0) AND D.[MonthOffset] BETWEEN -36 AND 0"])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

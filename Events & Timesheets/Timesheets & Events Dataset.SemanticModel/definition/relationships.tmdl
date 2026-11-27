@@ -1,0 +1,212 @@
+relationship b20987c7-45a9-4205-9fcf-5bf14f85bced
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'BIAbout vw_Info'.GoliveDate
+	toColumn: LocalDateTable_499b292d-e969-4379-8379-4d357a4ff425.Date
+
+relationship 110fa584-4a05-40de-948d-51cd47bf9278
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'BIAbout vw_VersionHistory'.VersionDate
+	toColumn: LocalDateTable_3c10842f-2fbe-49bf-9877-e346a76dd99e.Date
+
+relationship AutoDetected_217f3c84-d5f2-4254-9d9b-cf5799d08dc8
+	fromColumn: 'BIAbout vw_VersionHistory'.ElementID
+	toColumn: 'BIAbout vw_Info'.ElementID
+
+relationship e63b9e0e-9c92-4184-8e34-f47a51e9cfd2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimReportedBy.EmploymentStartDate
+	toColumn: LocalDateTable_67380841-aa52-4eab-9823-a7ed7953536c.Date
+
+relationship ec34c4c1-6a34-408a-bc6c-61e98d0b6039
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimReportedBy.EmploymentEndDate
+	toColumn: LocalDateTable_7a0eeb92-7fe8-46fb-a1db-793e0b57eeb2.Date
+
+relationship 180779d6-3d56-4730-8f48-87025da3d923
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimReportedBy.FromDate
+	toColumn: LocalDateTable_5248de6f-bcab-4312-b5f6-bf3163b9dd8d.Date
+
+relationship 7e0b3d97-1fb0-436c-9b7f-7d5c2c911915
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimReportedBy.ToDate
+	toColumn: LocalDateTable_f94b5150-334f-4593-9a86-6d386cbe6ee8.Date
+
+relationship c05d316c-d7de-41df-b8f6-31b9f48a1eb8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimReportedBy.DOB
+	toColumn: LocalDateTable_5a0b6630-3729-4f66-bb24-dd670f7061c2.Date
+
+relationship 4778dac0-dcdc-4de9-a836-de22d042453e
+	fromColumn: DimReportedBy.EntityTypeID
+	toColumn: DimEntityType.EntityTypeID
+
+	annotation PBI_IsFromSource = FS
+
+relationship f1ef8352-a34a-421f-a36f-eb809151b34e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimDate.DateValue
+	toColumn: LocalDateTable_b4ad4756-8ace-4530-a9bb-e8598c376afe.Date
+
+relationship 5552e702-2430-47ad-8f0d-9ccdb8c201ff
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimDate.WeekEndDate
+	toColumn: LocalDateTable_280a74bc-c3ee-4bc8-a7ef-d05d832adeb0.Date
+
+relationship 3bc4996c-5e79-4a57-a030-63cc18360055
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FactTimeSheetHours.BACK_PAY_ENTERED_IN_TS_START_DATE
+	toColumn: LocalDateTable_e182b04e-de0f-4418-8bde-af252323610b.Date
+
+relationship bdbc30cd-65bf-0178-95bd-c1a49cf2ca33
+	fromColumn: FactTimeSheetHours.ProjectID
+	toColumn: POS.ProjectID
+
+relationship 8a69490d-114a-17ac-5596-962b05cd1abc
+	fromColumn: FactTimeSheetHours.EntityID
+	toColumn: DimReportedBy.EntityID
+
+relationship e8a5f592-93c4-08af-58b0-137213eb5300
+	fromColumn: FactTimeSheetHours.TimeSheetDateID
+	toColumn: DimDate.DateID
+
+relationship 886e3e9d-caa5-4447-af72-fc97bf7c49c8
+	fromColumn: DimActivity.ActivityTypeID
+	toColumn: DimActivityType.ActivityTypeID
+
+	annotation PBI_IsFromSource = FS
+
+relationship 7155f825-0652-495e-e2cb-65441491fb52
+	fromColumn: FactTimeSheetHours.ActivityID
+	toColumn: DimActivity.ActivityID
+
+relationship 7fd56af4-670f-1cc9-b82e-06144b7b0e4a
+	fromColumn: DimReportedBy.DesignationID
+	toColumn: DimDesignation.DesignationID
+
+relationship 00d425cc-3135-c497-3b48-d5ae7f933c7f
+	fromColumn: EmployeeProjectCosts.DOC_DATE
+	toColumn: DimDate.DateValue
+
+relationship 4584b9f5-bc62-cbd2-0fd1-9422d5a515dc
+	fromColumn: EmployeeProjectCosts.IE_CODE
+	toColumn: POS.'Project Code'
+
+relationship e8f06862-3c5d-768e-5122-806fb90d2ae9
+	toCardinality: many
+	fromColumn: EmployeeProjectCosts.ENTITY_DIVISION_ID
+	toColumn: DimReportedBy.EntityDivisionID
+
+relationship 20c651de-d3ec-b373-b363-2b4ea81925d1
+	toCardinality: many
+	fromColumn: EmployeeProjectCosts.INPUT_CODE
+	toColumn: DimActivity.InputCode
+
+relationship cdff401b-6b62-379f-a228-fc77cb5e9533
+	fromColumn: FactEventRegister.Level1CatID
+	toColumn: DimLevel1Categorisation.Level1CatID
+
+relationship 2e077452-5e02-19b0-5ed4-c77619b9aa94
+	fromColumn: FactEventRegister.Level2CatID
+	toColumn: DimLevel2Categorisation.Level2CatID
+
+relationship 179e6fbc-8e4a-902c-c069-c4c5f964d516
+	fromColumn: FactEventRegister.Level3CatID
+	toColumn: DimLevel3Categorisation.Level3CatID
+
+relationship 221dbd89-b6fd-43be-08a7-87ad7bbe0035
+	fromColumn: FactEventRegister.Level4CatID
+	toColumn: DimLevel4Categorisation.Level4CatID
+
+relationship 36cd299a-0c03-ea2f-a468-109b5167edee
+	fromColumn: FactEventRegister.SourceID
+	toColumn: DimSource.SourceID
+
+relationship ea8c3b70-8867-1b83-b7b3-89c5ce43baf2
+	fromColumn: FactEventRegister.FormTypeID
+	toColumn: DimFormType.FormTypeID
+
+relationship c387f6c5-94f1-0d67-1b93-cfc11ff9c18a
+	fromColumn: FactEventRegister.Datekey
+	toColumn: DimDate.DateID
+
+relationship 79c75838-1b9b-3911-fba8-330f180ec9f4
+	fromColumn: FactEventRegister.ProjectID
+	toColumn: POS.ProjectID
+
+relationship 2b747192-d6b3-7c50-624a-7f7708ffdc6e
+	fromColumn: FactEventRegister.ReportedByEntityID
+	toColumn: DimReportedBy.EntityID
+
+relationship ee981219-7de8-21ba-5878-6f252d583111
+	fromColumn: FactEventRegister.EventStatusID
+	toColumn: DimEventStatus.EventStatusID
+
+relationship 41432943-c19d-c2ec-2fa8-63f065e8a035
+	fromColumn: FactEventRegister.EventTypeID
+	toColumn: DimEventType.EventTypeID
+
+relationship 6dd10a78-83ba-4682-ab69-0319b525f980
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FactEventActionResponse.DateOpened
+	toColumn: LocalDateTable_bc1e6893-cf1f-49da-a722-088c72eb8959.Date
+
+relationship d9c4d986-bc63-49c3-b666-121139bf0cde
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FactEventActionResponse.DateClosed
+	toColumn: LocalDateTable_1c67fc7a-49f1-43d5-ba8d-c1656241d087.Date
+
+relationship 5dd4fb4d-bd73-ef20-a89b-d6be9dbe990b
+	fromColumn: FactEventActionResponse.EventID
+	toColumn: FactEventRegister.EventID
+
+relationship 6dec00ec-debe-54c4-78f5-ff766429516d
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'POS - Unpivot'.ProjectID
+	toColumn: POS.ProjectID
+
+relationship 67746bae-de22-4680-a85b-fe4f991d1708
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FactTargetRate.'Start date'
+	toColumn: LocalDateTable_d8a307f2-bc18-4bbf-9f76-3a892811e0ef.Date
+
+relationship 13252548-608e-4b59-95b9-ab717e4c6ccd
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FactTargetRate.'End date'
+	toColumn: LocalDateTable_1591b55a-4ff7-478d-b955-a32f0160b82d.Date
+
+relationship 6da9da7e-e442-fae3-70c5-f323da298fc2
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: FactEventRegister.EventID
+	toColumn: FactEventActionResponseCarbonSummary.EventID
+
+relationship 0ea8a6d8-ec91-4421-be0a-f1b07e68106e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FactTargetPercent.'Start date'
+	toColumn: LocalDateTable_ca3925fe-44a9-421e-93f5-22a8664cda74.Date
+
+relationship 889634d1-d905-4f7e-ae78-fe19238416db
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FactTargetPercent.'End date'
+	toColumn: LocalDateTable_486fa0bf-d839-4b77-bea8-e367f7bb0162.Date
+
+relationship 24f70316-546b-d021-ca2c-669cc4120e44
+	fromColumn: FactEventActionResponse.Answer
+	toColumn: RAGOrder.RAG
+
+relationship 2d988014-54c3-5ea7-912a-e7531494d58d
+	isActive: false
+	fromColumn: FactEventActionResponse.DateOpenedID
+	toColumn: DimDate.DateID
+
+relationship 5b90d737-c1de-387f-253d-7355bc6529d0
+	fromColumn: DimReportedBy.EmploymentGUID
+	toColumn: DimLocation.EmploymentGUID
+
+relationship 999c4ba0-ff05-2a9b-56a3-642b79d02e5f
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: FactEventActionResponse.Response_ID
+	toColumn: XpedeonWritebackEventActions.ResponseID
+

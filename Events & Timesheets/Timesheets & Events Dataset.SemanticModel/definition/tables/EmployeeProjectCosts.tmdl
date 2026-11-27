@@ -1,0 +1,85 @@
+table EmployeeProjectCosts
+	lineageTag: 4b0c9b33-ced0-4755-899d-baf85253086b
+
+	measure 'Employee Cost' = SUM(EmployeeProjectCosts[COST])
+		formatString: "£"#,0.0;-"£"#,0.0;"£"#,0.0
+		displayFolder: 1. Measures
+		lineageTag: c27abbf1-2173-4179-b733-8227af9214a1
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure 'Employee Cost inc External' =
+			[Employee Cost] --+ [External Hours Est Cost]
+			+ IF(MAX(DimDesignation[DesignationDescription])="Undefined",[External Hours Est Cost],0)
+		formatString: "£"#,0.0;-"£"#,0.0;"£"#,0.0
+		displayFolder: 1. Measures
+		lineageTag: 49180d9d-7e9b-4a2d-834a-20a4532cdc6f
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	measure 'Employee Cost inc External (ALL)' =
+			[Employee Cost] --+ [External Hours Est Cost]
+			+ IF(MAX(DimDesignation[DesignationDescription])="Undefined",[External Hours Est Cost (ALL)],0)
+		displayFolder: 1. Measures
+		lineageTag: 1f3655cf-6224-42f8-9487-3ab17f3f0eba
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ENTITY_DIVISION_ID
+		dataType: double
+		lineageTag: 68dda3b9-dedf-455f-83fd-e0bde281f260
+		summarizeBy: none
+		sourceColumn: ENTITY_DIVISION_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DOC_DATE
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 87fc299a-30b3-404f-a6d4-24a4f82bea72
+		summarizeBy: none
+		sourceColumn: DOC_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column IE_CODE
+		dataType: string
+		lineageTag: 094317c4-7395-4eaa-b213-e5972a84c74b
+		summarizeBy: none
+		sourceColumn: IE_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column INPUT_CODE
+		dataType: string
+		lineageTag: 98aaf28e-ffc9-430d-a579-54f8b8db1281
+		summarizeBy: none
+		sourceColumn: INPUT_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column COST
+		dataType: double
+		lineageTag: 7dc9ac60-b0a0-4102-a704-c7a64da7eace
+		summarizeBy: sum
+		sourceColumn: COST
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition EmployeeProjectCosts = m
+		mode: import
+		queryGroup: Facts
+		source =
+				let
+				    Source = Sql.Database(Instances, "ExternalData", [Query="-- Retrieve hire charge costs by entity, date, IE and input code#(lf)SELECT HC.[ENTITY_DIVISION_ID]#(lf)             ,HC.[DOC_DATE]#(lf)             ,HC.[IE_CODE]#(lf)             ,HC.[INPUT_CODE]#(lf)             ,SUM(HC.[Amount]) [COST]#(lf)FROM [ExternalData].[XPEDEON].[ATT_PROC_HIRE_CHARGES] HC INNER JOIN#(lf)             [JNBDW].[dbo].[DimDate] D ON D.[DateValue] = HC.[DOC_DATE]#(lf)-- Restrict data to the current and previous 36 months#(lf)WHERE D.[MonthOffset] BETWEEN -36 AND 0#(lf)GROUP BY HC.[ENTITY_DIVISION_ID], HC.[DOC_DATE], HC.[IE_CODE], HC.[INPUT_CODE]"])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

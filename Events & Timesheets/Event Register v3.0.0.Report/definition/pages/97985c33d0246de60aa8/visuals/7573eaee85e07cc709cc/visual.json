@@ -1,0 +1,489 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "7573eaee85e07cc709cc",
+  "position": {
+    "x": 0,
+    "y": 75.559471365638771,
+    "z": 5000,
+    "height": 225.55066079295153,
+    "width": 1280,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "POS"
+                    }
+                  },
+                  "Property": "Project Full"
+                }
+              },
+              "queryRef": "POS.Project Full",
+              "nativeQueryRef": "Project Fullname",
+              "displayName": "Project Fullname"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactEventRegister"
+                    }
+                  },
+                  "Property": "DOC_REF"
+                }
+              },
+              "queryRef": "FactEventRegister.DOC_REF",
+              "nativeQueryRef": "DocRef",
+              "displayName": "DocRef"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimDate"
+                    }
+                  },
+                  "Property": "DateValue"
+                }
+              },
+              "queryRef": "DimDate.DateValue",
+              "displayName": "Event Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimReportedBy"
+                    }
+                  },
+                  "Property": "EntityName"
+                }
+              },
+              "queryRef": "DimReportedBy.EntityName",
+              "nativeQueryRef": "Reported By",
+              "displayName": "Reported By"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactEventRegister"
+                    }
+                  },
+                  "Property": "Description"
+                }
+              },
+              "queryRef": "FactEventRegister.Description"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Calendar"
+                  }
+                },
+                "Property": "Date"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "general": [
+        {
+          "properties": {}
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 4,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            },
+            "columnAdjustment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'fixedWidth'"
+                }
+              }
+            },
+            "defaultColumnWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "90D"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "outlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "rowPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            },
+            "textSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "backColorSecondary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F2F2F1'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "85.13677811550151D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "DimDate.DateValue"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "249.82394181593284D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "POS.Project Full"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "567.286773155369D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "FactEventRegister.Description"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "173.58459538641216D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "FactEventRegister.DOC_REF"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "179.20353982300884D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "DimReportedBy.EntityName"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#013976'"
+                    }
+                  }
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Report'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "30D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "Filtera765647cd33a402c7d35",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimDate"
+              }
+            },
+            "Property": "DateValue"
+          }
+        },
+        "type": "Categorical",
+        "isHiddenInViewMode": true
+      },
+      {
+        "name": "Filter95c14721420914199a00",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FactEventRegister"
+              }
+            },
+            "Property": "Description"
+          }
+        },
+        "type": "Categorical",
+        "isHiddenInViewMode": true
+      },
+      {
+        "name": "00796e269074a32ab7e8",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimReportedBy"
+              }
+            },
+            "Property": "ShortName"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User",
+        "isHiddenInViewMode": true
+      },
+      {
+        "name": "2281d6be5c2a550d0660",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "POS"
+              }
+            },
+            "Property": "Project Full"
+          }
+        },
+        "type": "Categorical",
+        "isHiddenInViewMode": true
+      },
+      {
+        "name": "a47e1c1ea7488ca0850b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FactEventRegister"
+              }
+            },
+            "Property": "DOC_REF"
+          }
+        },
+        "type": "Categorical",
+        "isHiddenInViewMode": true
+      },
+      {
+        "name": "d3960bb3017c3ab9e077",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimReportedBy"
+              }
+            },
+            "Property": "EntityName"
+          }
+        },
+        "type": "Categorical",
+        "isHiddenInViewMode": true
+      }
+    ],
+    "filterSortOrder": "Ascending"
+  }
+}

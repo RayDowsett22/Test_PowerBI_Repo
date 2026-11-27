@@ -1,0 +1,73 @@
+table 'BIAbout vw_VersionHistory'
+	lineageTag: 9ffeabb8-8ae7-4b71-8ef3-0a5981f7372b
+
+	column ElementID
+		dataType: int64
+		formatString: 0
+		lineageTag: eb3198d6-bcab-4904-a8a0-bf256630ee24
+		summarizeBy: none
+		sourceColumn: ElementID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ElementVersionID
+		dataType: int64
+		formatString: 0
+		lineageTag: b60ac936-1ff0-4657-9c03-277a2bddff85
+		summarizeBy: count
+		sourceColumn: ElementVersionID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ResourceName
+		dataType: string
+		lineageTag: 46513225-7477-4e00-a255-70798cf5bdee
+		summarizeBy: none
+		sourceColumn: ResourceName
+
+		annotation SummarizationSetBy = Automatic
+
+	column LatestUpdateDescription
+		dataType: string
+		lineageTag: 389f0c1a-394a-4387-a8bc-8457789fbd39
+		summarizeBy: none
+		sourceColumn: LatestUpdateDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column VersionDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 9a85bf9d-9e90-42e7-babb-fb1578e6a99f
+		summarizeBy: none
+		sourceColumn: VersionDate
+
+		variation Variation
+			isDefault
+			relationship: 110fa584-4a05-40de-948d-51cd47bf9278
+			defaultHierarchy: LocalDateTable_3c10842f-2fbe-49bf-9877-e346a76dd99e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column CurrentVersion
+		dataType: string
+		lineageTag: 7a40d224-8bd9-4eef-aba1-fa6e9022c9e3
+		summarizeBy: none
+		sourceColumn: CurrentVersion
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'BIAbout vw_VersionHistory' = m
+		mode: import
+		queryGroup: 'Report Info'
+		source =
+				let
+				    Source = Sql.Database(Instances, "BIReporting"),
+				    BIAbout_vw_VersionHistory = Source{[Schema="BIAbout",Item="vw_VersionHistory"]}[Data]
+				in
+				    BIAbout_vw_VersionHistory
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

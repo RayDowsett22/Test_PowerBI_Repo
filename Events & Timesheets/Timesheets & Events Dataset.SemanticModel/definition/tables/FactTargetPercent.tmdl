@@ -1,0 +1,167 @@
+table FactTargetPercent
+	lineageTag: 2257d46c-4c53-42bc-be97-803601ba9747
+
+	column 'Event Type'
+		dataType: string
+		lineageTag: c7cfe559-a172-42a8-8eee-ed458249ae7a
+		summarizeBy: none
+		sourceColumn: Event Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Target type'
+		dataType: string
+		lineageTag: b4d24b78-acf0-4ed6-965a-ce1d2d1ece9b
+		summarizeBy: none
+		sourceColumn: Target type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Level
+		dataType: string
+		lineageTag: 27c9dd60-1d00-4931-919b-8fc73e93b2bc
+		summarizeBy: none
+		sourceColumn: Level
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Level 1 Categorisation'
+		dataType: string
+		lineageTag: 061f34bc-c002-4532-83e0-530235c75082
+		summarizeBy: none
+		sourceColumn: Level 1 Categorisation
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Level 2 Categorisation'
+		dataType: string
+		lineageTag: 63e5146a-25db-4337-b60c-dfc59cec83e3
+		summarizeBy: none
+		sourceColumn: Level 2 Categorisation
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Level 3 Categorisation'
+		dataType: string
+		lineageTag: 3fe3ff57-e981-433c-8410-b261ecf5becb
+		summarizeBy: none
+		sourceColumn: Level 3 Categorisation
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: aa6bebba-0636-4f74-ba36-c7a76a097ee0
+		summarizeBy: none
+		sourceColumn: Start date
+
+		variation Variation
+			isDefault
+			relationship: 0ea8a6d8-ec91-4421-be0a-f1b07e68106e
+			defaultHierarchy: LocalDateTable_ca3925fe-44a9-421e-93f5-22a8664cda74.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'End date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6100b7ab-c842-44a3-84b8-bfeafbb99136
+		summarizeBy: none
+		sourceColumn: End date
+
+		variation Variation
+			isDefault
+			relationship: 889634d1-d905-4f7e-ae78-fe19238416db
+			defaultHierarchy: LocalDateTable_486fa0bf-d839-4b77-bea8-e367f7bb0162.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Green min'
+		dataType: double
+		lineageTag: 985b2b33-9119-4270-ab13-7970407f48ac
+		summarizeBy: sum
+		sourceColumn: Green min
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Amber max'
+		dataType: double
+		lineageTag: d3c39e37-7871-4dc0-a0fd-5708689c47d9
+		summarizeBy: sum
+		sourceColumn: Amber max
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Red max'
+		dataType: double
+		lineageTag: 61cf644d-b0db-4f7f-8c93-3f020def9fbb
+		summarizeBy: sum
+		sourceColumn: Red max
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Documentation
+		dataType: string
+		lineageTag: 1f77923d-1c50-48ae-a9d6-39f51dc06c8e
+		summarizeBy: none
+		sourceColumn: Documentation
+
+		annotation SummarizationSetBy = Automatic
+
+	column FactTargetPercentSK
+		dataType: int64
+		formatString: 0
+		lineageTag: bd85f840-2a8b-46b1-a971-15cbf7d6c711
+		summarizeBy: sum
+		sourceColumn: FactTargetPercentSK
+
+		annotation SummarizationSetBy = Automatic
+
+	column EventTypeID
+		dataType: int64
+		formatString: 0
+		lineageTag: 4bdd0b21-22fd-4a60-b613-e6f68638dbd4
+		summarizeBy: count
+		sourceColumn: EventTypeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Level1CatID
+		dataType: int64
+		formatString: 0
+		lineageTag: 2db36d9d-c698-4de6-bb8e-3d46b8b229b7
+		summarizeBy: count
+		sourceColumn: Level1CatID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactTargetPercent = m
+		mode: import
+		queryGroup: Facts
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("1dtdU9pAFAbgv3KGK+toDcHS4ZJBFDuiFJh6Yb1YkxVXk11ms2D59z0BKc0gISB6jjPyPZrHk83uvtlwc1P62fg98jy/2oTmWGpXOig1IpPIEGT6MsHXp3jb/+/mlY/wp1yr1fBFBZ/5R/7shfe19m32ML0/ruJDPQzxj5WrPTn0Pd+Duwm01ZOEroiHkdKl24MihjLezoyDcwddNXhwDDgXUlit9ABOjYVL+cdBX8XyXWG91mrSfolsL4nAKaN31VS8b5dm/BbEjtvKTjzv0ljyZa80loVpF61l481nDp+OSZRTYwnn2kmbfoK0t7bf4/rQoshPRT/Mg4aWSCL5bExYyFSPIuQ8juyEGNLUY2WNjvEtEeHv2pgYdGn0S2Wgh3tLBRJ6zuI+J3YhRplRgoeUsNgGk4TQ4+e06r6InqAn7iUwxLVFKNnippU7s1Jqhrhp5ahxmV7rwiQO3GJsIQe1ZagC7MT6VgqXdmhwCBE3ZPf85OSqC+lQXpHwPRSThPJYyLH1hjJQ90qGXHinAoco5SaEnldHy0a9D2Vsa23xaCxHnA+HPTXQuDMDoR1HYQXLd2GeCWl5044zkUAL5/cwtDJJRpayM1nnTDvBUQwd/lLc39yZzUgG+DyYWn+ZyIkBe+q0ofK2Xguc2syGmQDKnhfHrKFlr3wIFfbMl2EbocBW2jBxPNI4DKWzWsp5z2tprmNcOt0W8ykHGDsdo2BPI7Yrh8Y6cRfJL8zcJ0IPpE3fvQqCkbVSY8n36L2VEuMguBZHmbVSHKustQTimLWWkIyy1hobddZa4hFnrdTDNmvl4lhkrVwhbdZKaZ8haxVx8shaRaQMstY6JqOsVZjKIGuts7LJWsWg5Flrg3oSZ611UhZZK0V+xqy1ys0sa2WX/pksdGdRlCvdWQmHpe6siNFadxbGYLF7AeKy8pgjYhSHc5T0ebgwjigQ5/hoEnEWxKsHW3eylxTGqgfLO9lIiuLVrXI+y5ij5NSt8jzPmOOj7lZXniojPS5ZdqurMhHVVZB5vWrmWr56NHwQWECM7hyZ82WwT8JsiTvlOALnu5stcF7B9IJ8GCfQVckTR+e8kNyd83qmPuhIG8jhy8fsqPOSklGzs2NuF48X01FdNLBB7QiuGtigdqQ63sP1Bk7S8XoL5wePh1vscb5C2iF7i1Kyh5IP2lsU9WOs/77g2a+XlqcYm3zhtTrb9PTeX2y/MvvO7XT79VDEcI3/pLSl29u/", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Event Type" = _t, #"Target type" = _t, Level = _t, #"Level 1 Categorisation" = _t, #"Level 2 Categorisation" = _t, #"Level 3 Categorisation" = _t, #"Start date" = _t, #"End date" = _t, #"Green min" = _t, #"Amber max" = _t, #"Red max" = _t, Documentation = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Event Type", type text}, {"Target type", type text}, {"Level", type text}, {"Level 1 Categorisation", type text}, {"Level 2 Categorisation", type text}, {"Level 3 Categorisation", type text}, {"Start date", type date}, {"End date", type date}, {"Green min", Percentage.Type}, {"Amber max", Percentage.Type}, {"Red max", Percentage.Type}, {"Documentation", type text}}),
+				    #"Added Index" = Table.AddIndexColumn(#"Changed Type", "FactTargetPercentSK", 1, 1, Int64.Type),
+				    #"Get DimEventType" = Table.NestedJoin(#"Added Index", {"Event Type"}, #"DimEventType", {"EventTypeDescription"}, "Stage - EventType", JoinKind.LeftOuter),
+				    #"Expanded Stage - EventType" = Table.ExpandTableColumn(#"Get DimEventType", "Stage - EventType", {"EventTypeID"}, {"EventTypeID"}),
+				    #"Get DimLevel1" = Table.NestedJoin(#"Expanded Stage - EventType", {"Level 1 Categorisation"}, #"DimLevel1Categorisation", {"Level 1 Categorisation"}, "DimLevel1Categorisation", JoinKind.LeftOuter),
+				    #"Expanded Stage - Level1" = Table.ExpandTableColumn(#"Get DimLevel1", "DimLevel1Categorisation", {"Level1CatID"}, {"Level1CatID"})
+				in
+				    #"Expanded Stage - Level1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

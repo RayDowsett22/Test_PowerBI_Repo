@@ -1,0 +1,289 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "e2b871cf3863a0044545",
+  "position": {
+    "x": 224.0670859538784,
+    "y": 399.83228511530393,
+    "z": 5000,
+    "height": 291.15303983228512,
+    "width": 831.86582809224319,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BIAbout vw_VersionHistory"
+                    }
+                  },
+                  "Property": "CurrentVersion"
+                }
+              },
+              "queryRef": "BIAbout vw_VersionHistory.CurrentVersion",
+              "nativeQueryRef": "Version Number",
+              "displayName": "Version Number"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BIAbout vw_VersionHistory"
+                    }
+                  },
+                  "Property": "LatestUpdateDescription"
+                }
+              },
+              "queryRef": "BIAbout vw_VersionHistory.LatestUpdateDescription",
+              "nativeQueryRef": "Update Description",
+              "displayName": "Update Description"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BIAbout vw_VersionHistory"
+                    }
+                  },
+                  "Property": "VersionDate"
+                }
+              },
+              "queryRef": "BIAbout vw_VersionHistory.VersionDate",
+              "nativeQueryRef": "Update Date",
+              "displayName": "Update Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "BIAbout vw_VersionHistory"
+                    }
+                  },
+                  "Property": "ResourceName"
+                }
+              },
+              "queryRef": "BIAbout vw_VersionHistory.ResourceName",
+              "nativeQueryRef": "Developer Name",
+              "displayName": "Developer Name"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "BIAbout vw_VersionHistory"
+                  }
+                },
+                "Property": "CurrentVersion"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 4,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "outlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 4,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "rowPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "418.82064205319085D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "BIAbout vw_VersionHistory.LatestUpdateDescription"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "148.87432322928728D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "BIAbout vw_VersionHistory.ResourceName"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Version Table'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "5aab9bfe4263a02149ae",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "BIAbout vw_VersionHistory"
+              }
+            },
+            "Property": "CurrentVersion"
+          }
+        },
+        "type": "Categorical",
+        "isHiddenInViewMode": true
+      },
+      {
+        "name": "9c41fc353543431700da",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "BIAbout vw_VersionHistory"
+              }
+            },
+            "Property": "LatestUpdateDescription"
+          }
+        },
+        "type": "Categorical",
+        "isHiddenInViewMode": true
+      },
+      {
+        "name": "404804180b1bc8aaed98",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "BIAbout vw_VersionHistory"
+              }
+            },
+            "Property": "VersionDate"
+          }
+        },
+        "type": "Categorical",
+        "isHiddenInViewMode": true
+      },
+      {
+        "name": "89bd31e8635909b55ead",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "BIAbout vw_VersionHistory"
+              }
+            },
+            "Property": "ResourceName"
+          }
+        },
+        "type": "Categorical",
+        "isHiddenInViewMode": true
+      }
+    ]
+  }
+}

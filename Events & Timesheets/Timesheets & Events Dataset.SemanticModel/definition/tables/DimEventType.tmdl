@@ -1,0 +1,60 @@
+table DimEventType
+	lineageTag: 1bd638f0-1d2c-453c-8dae-574d941152a0
+
+	column EventTypeID
+		dataType: int64
+		formatString: 0
+		lineageTag: 02b2b799-a6fb-4863-a6d5-f02662d82fcd
+		summarizeBy: none
+		sourceColumn: EventTypeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column EventTypeDescription
+		dataType: string
+		lineageTag: ee70fea1-fe0c-43e2-9e04-53ef180b923d
+		summarizeBy: none
+		sourceColumn: EventTypeDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column InsertAuditID
+		dataType: int64
+		formatString: 0
+		lineageTag: 80f11a3a-66f0-4cbd-9865-91329e617b8a
+		summarizeBy: none
+		sourceColumn: InsertAuditID
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpdateAuditID
+		dataType: int64
+		formatString: 0
+		lineageTag: cbb4d74b-c822-4b2e-919c-055b09cd4fdc
+		summarizeBy: none
+		sourceColumn: UpdateAuditID
+
+		annotation SummarizationSetBy = Automatic
+
+	column EventTypeDescription_new
+		dataType: string
+		lineageTag: 173111f5-22bc-4191-b80f-9fd9003b1cc6
+		summarizeBy: none
+		sourceColumn: EventTypeDescription_new
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimEventType = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				    Source = Sql.Database(Instances, "JNBDW"),
+				    dbo_DimEventType = Source{[Schema="dbo",Item="DimEventType"]}[Data]
+				in
+				    dbo_DimEventType
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+

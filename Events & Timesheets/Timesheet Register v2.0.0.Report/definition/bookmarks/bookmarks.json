@@ -1,0 +1,83 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmarksMetadata/1.0.0/schema.json",
+  "items": [
+    {
+      "name": "ae739ac772267436d39a",
+      "displayName": "Timesheet Summary",
+      "children": [
+        "c6ea1ebb375bc79093c9",
+        "aefc6b2070c50cec6b5a",
+        "637d6a3cb06162ee0843",
+        "eeb2f8f04a94c3d0aacb",
+        "39549bf65b80987b86c0",
+        "beee06947c0b6a516b50",
+        "9ab5b10d09407d96de70",
+        "621d571582bc0e10aab2"
+      ]
+    },
+    {
+      "name": "3e8dfdf000518370e193",
+      "displayName": "Hours Info",
+      "children": [
+        "3f8f91a37a10ba443c34",
+        "1bc52d8e0c8e93058b02"
+      ]
+    },
+    {
+      "name": "506e8343839e1256965e",
+      "displayName": "All Hours Info",
+      "children": [
+        "353b4beec70a5e444a98",
+        "af4777403b0a01664edb"
+      ]
+    },
+    {
+      "name": "414b14c7d1dbb02bede6",
+      "displayName": "Project Summary",
+      "children": [
+        "2e139423c725787ba155",
+        "69a802d203403e60d27d"
+      ]
+    },
+    {
+      "name": "1db15a53979e7eb7c8ad",
+      "displayName": "Project Summary All - Help",
+      "children": [
+        "71bc8b4ccb595c08b717",
+        "a893eb050ed08b606300"
+      ]
+    },
+    {
+      "name": "7ee335cb5d8a3ae1d0d7",
+      "displayName": "Timesheet",
+      "children": [
+        "66b41265ace964899136",
+        "1126cef30c2b062a02c7"
+      ]
+    },
+    {
+      "name": "5f8d3d76043ab6e433e6",
+      "displayName": "Timesheets All",
+      "children": [
+        "41e8df2317cde26684bb",
+        "448f83be62b04044c912"
+      ]
+    },
+    {
+      "name": "6545c5be7b94d036a046",
+      "displayName": "Processed Timesheets",
+      "children": [
+        "ffabfe6431e0e69310a4",
+        "c169fcf794ea0d81e19e"
+      ]
+    },
+    {
+      "name": "d5d21e06c9da83b1b4a3",
+      "displayName": "Timesheets",
+      "children": [
+        "a0ed3f61b06536c06856",
+        "14fe36a189aa07613256"
+      ]
+    }
+  ]
+}

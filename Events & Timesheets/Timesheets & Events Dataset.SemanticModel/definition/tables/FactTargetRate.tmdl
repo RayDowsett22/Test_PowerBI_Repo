@@ -1,0 +1,345 @@
+table FactTargetRate
+	lineageTag: 5402683d-1541-4225-9460-15d21dda56dc
+
+	measure 'Frequency Rate - Amber Target' = ```
+			
+			/* DOCUMENTATION *
+			Get a target for the context month.
+			It assumes the target data has been validated and does not contain any mid month changes or ovelapping rates.
+			In the unlikely event there are overlaps the max value will be returned.
+			This measure should only be used to compare monthly actuals vs target and not weekly, quarterely or yearly.
+			*/
+			
+			VAR TargetRecord =
+			 FILTER('FactTargetRate',
+			       [Matching Targets Frequency Rate] <> BLANK()
+			 )
+			
+			VAR target =  
+			CALCULATE(
+			    MAX('FactTargetRate'[Amber max]),
+			    TargetRecord 
+			   )
+			
+			RETURN
+			target
+			```
+		formatString: 0
+		displayFolder: 1. Measures
+		lineageTag: 4ea78509-4cbb-43b9-80db-c43c5f14cebb
+
+	measure 'Frequency Rate - Green Target' = ```
+			
+			
+			/* DOCUMENTATION *
+			Get a target for the context month.
+			It assumes the target data has been validated and does not contain any mid month changes or ovelapping rates.
+			In the unlikely event there are overlaps the max value will be returned.
+			This measure should only be used to compare monthly actuals vs target and not weekly, quarterely or yearly.
+			*/
+			
+			VAR TargetRecord =
+			 FILTER('FactTargetRate',
+			      [Matching Targets Frequency Rate] <> BLANK()
+			)
+			
+			VAR target =  
+			CALCULATE(
+			    MAX('FactTargetRate'[Green min]),
+			   TargetRecord 
+			    )
+			
+			RETURN
+			target
+			```
+		formatString: 0
+		displayFolder: 1. Measures
+		lineageTag: 4ef26539-b372-4af7-8515-450312d4e453
+
+	measure 'Frequency Rate - RAG' = ```
+			
+			/* DOCUMENTATION *
+			Get the RAG status for the context month.
+			Note this measure should only be used to compare monthly actuals vs target % and not weekly, quarterely or yearly.
+			*/
+			VAR actual          = [Frequency Rate]
+			VAR redtarget       = [Frequency Rate - Red Target]
+			VAR ambertarget     = [Frequency Rate - Amber Target]
+			VAR greentarget     =  [Frequency Rate - Green Target]
+			RETURN
+			SWITCH(TRUE(),
+			redtarget  = blank(), blank(),                    -- dont use rags if target is blank
+			actual = blank(), "#FF0000",
+			actual  > greentarget, "#00B050",
+			actual  > ambertarget, "#92D050",
+			actual  < redtarget,   "#FF0000",
+			"#FFC000"
+			)
+			
+			```
+		displayFolder: 1. Measures
+		lineageTag: d9d17659-96dd-4876-ac38-fa2fce247775
+
+	measure 'Frequency Rate - RAG (Project)' = ```
+			
+			/* DOCUMENTATION *
+			Get the RAG status for the context month.
+			Note this measure should only be used to compare monthly actuals vs target % and not weekly, quarterely or yearly.
+			*/
+			VAR actual          = [Frequency Rate]
+			VAR redtarget       = IF(SELECTEDVALUE(DimEventType[EventTypeDescription_new]) = "QC&E TA", BLANK(),[Frequency Rate - Red Target])
+			VAR ambertarget     = [Frequency Rate - Amber Target]
+			VAR greentarget     =  [Frequency Rate - Green Target]
+			RETURN
+			SWITCH(TRUE(),
+			redtarget  = blank(), blank(),                    -- dont use rags if target is blank
+			actual = blank(), "#FF0000",
+			actual  > greentarget, "#00B050",
+			actual  > ambertarget, "#92D050",
+			actual  < redtarget,   "#FF0000",
+			"#FFC000"
+			)
+			
+			```
+		displayFolder: 1. Measures
+		lineageTag: 4878b91b-61b3-405a-a31e-830d5f20ce46
+
+	measure 'Frequency Rate - Red Target' = ```
+			
+			/* DOCUMENTATION *
+			Get a target for the context month.
+			It assumes the target data has been validated and does not contain any mid month changes or ovelapping rates.
+			In the unlikely event there are overlaps the max value will be returned.
+			This measure should only be used to compare monthly actuals vs target and not weekly, quarterely or yearly.
+			*/
+			
+			VAR TargetRecord =
+			FILTER('FactTargetRate',
+			      [Matching Targets Frequency Rate] <> BLANK()
+			 )
+			
+			VAR target =  
+			CALCULATE(
+			    MAX('FactTargetRate'[Red max]),
+			    TargetRecord 
+			   )
+			
+			RETURN
+			target
+			```
+		formatString: 0
+		displayFolder: 1. Measures
+		lineageTag: 6387b562-5edf-494e-a831-b701e6ba5b49
+
+	measure 'Matching Targets Frequency Rate' = ```
+			
+			/* DOCUMENTATION *
+			Counts the number of targets that are valid for the selection.
+			This is then used in another measures to get the target.
+			*/
+			VAR EventType = SELECTEDVALUE(DimEventType[EventTypeDescription_new],"*")
+			VAR HoursType = SELECTEDVALUE(DimEntityType[EntityTypeDescription],"*")
+			VAR LevelType = SWITCH(TRUE(),
+			    ISFILTERED(DimEntityType[EntityTypeDescription])=TRUE(),"S",
+			    ISFILTERED(DimLevel3Categorisation[Level 3 Categorisation])=TRUE(),"3",
+			    ISFILTERED(DimLevel2Categorisation[Level 2 Categorisation])=TRUE(),"2",
+			    ISFILTERED(DimLevel1Categorisation[Level 1 Categorisation])=TRUE(),"1",
+			    ISFILTERED(DimEventType[EventTypeDescription_new])=TRUE(),"F",
+			    BLANK()
+			)
+			VAR Level1 = SELECTEDVALUE(DimLevel1Categorisation[Level 1 Categorisation])
+			VAR Level2 = SELECTEDVALUE(DimLevel2Categorisation[Level 2 Categorisation])
+			VAR Level3 = SELECTEDVALUE(DimLevel3Categorisation[Level 3 Categorisation])
+			VAR startofcontextperiod = MIN('DimDate'[DateValue])
+			VAR endofcontextperiod = MAX(DimDate[DateValue])
+			VAR TargetRecord =
+			 FILTER('FactTargetRate',
+			       'FactTargetRate'[Target type]               = "Event per 100K hrs" 
+			    && 'FactTargetRate'[Event Type]                IN {EventType,"*"}
+			    && 'FactTargetRate'[HoursType]                 IN {HoursType,"*"}
+			    && 'FactTargetRate'[Level]                     IN {LevelType,"*"}   
+			    && 'FactTargetRate'[Level 1 Categorisation]    IN {Level1, "*"}
+			    && 'FactTargetRate'[Level 2 Categorisation]    IN {Level2, "*"}
+			    && 'FactTargetRate'[Level 3 Categorisation]    IN {Level3, "*"}
+			    &&  startofcontextperiod                       >= 'FactTargetRate'[Start date]
+			    &&  endofcontextperiod                         <= 'FactTargetRate'[End date] 
+			    )
+			
+			RETURN
+			COUNTROWS(TargetRecord)
+			
+			```
+		formatString: 0
+		displayFolder: 1. Measures
+		lineageTag: f064303b-0301-411f-8217-9231b73f1aeb
+
+	column 'Event Type'
+		dataType: string
+		lineageTag: 6cc149dd-d9cd-49e0-a166-c623093d5870
+		summarizeBy: none
+		sourceColumn: Event Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Target type'
+		dataType: string
+		lineageTag: b28ad62a-edb8-45b3-ae56-3dfcc85197d6
+		summarizeBy: none
+		sourceColumn: Target type
+
+		annotation SummarizationSetBy = Automatic
+
+	column HoursType
+		dataType: string
+		lineageTag: 6445a0fe-f1d2-4a33-9663-bcf698032f48
+		summarizeBy: none
+		sourceColumn: HoursType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Level
+		dataType: string
+		lineageTag: a49a0716-a625-4b2f-bf87-a288defe5e90
+		summarizeBy: none
+		sourceColumn: Level
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Level 1 Categorisation'
+		dataType: string
+		lineageTag: 1d0c6f65-cb1f-4979-bf3d-2a59a7de1c6d
+		summarizeBy: none
+		sourceColumn: Level 1 Categorisation
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Level 2 Categorisation'
+		dataType: string
+		lineageTag: cb9a031e-aec9-4d46-a24c-dad91051314e
+		summarizeBy: none
+		sourceColumn: Level 2 Categorisation
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Level 3 Categorisation'
+		dataType: string
+		lineageTag: d399e0af-f0e9-47d2-9df8-84fc09302bf7
+		summarizeBy: none
+		sourceColumn: Level 3 Categorisation
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 35703999-118a-48f2-8e6c-a6738df2e4d4
+		summarizeBy: none
+		sourceColumn: Start date
+
+		variation Variation
+			isDefault
+			relationship: 67746bae-de22-4680-a85b-fe4f991d1708
+			defaultHierarchy: LocalDateTable_d8a307f2-bc18-4bbf-9f76-3a892811e0ef.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'End date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d36fd7d4-d49c-4c7b-90a2-6918bfc2c0a2
+		summarizeBy: none
+		sourceColumn: End date
+
+		variation Variation
+			isDefault
+			relationship: 13252548-608e-4b59-95b9-ab717e4c6ccd
+			defaultHierarchy: LocalDateTable_1591b55a-4ff7-478d-b955-a32f0160b82d.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Green min'
+		dataType: int64
+		formatString: 0
+		lineageTag: 31f5d72b-2fbe-4642-b121-b6143f2e638d
+		summarizeBy: sum
+		sourceColumn: Green min
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Amber max'
+		dataType: int64
+		formatString: 0
+		lineageTag: dbc6a1a6-4fe9-4f11-8e02-a5cdc54ab16c
+		summarizeBy: sum
+		sourceColumn: Amber max
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Red max'
+		dataType: int64
+		formatString: 0
+		lineageTag: ab8d80ad-b063-41f3-bf38-ea0622e668db
+		summarizeBy: sum
+		sourceColumn: Red max
+
+		annotation SummarizationSetBy = Automatic
+
+	column Documentation
+		dataType: string
+		lineageTag: cd010c70-b878-4f08-8541-24e3d2823af3
+		summarizeBy: none
+		sourceColumn: Documentation
+
+		annotation SummarizationSetBy = Automatic
+
+	column FactTargetRateSK
+		dataType: int64
+		formatString: 0
+		lineageTag: f314a3de-5550-4bcb-866a-3c2f10ceb1ec
+		summarizeBy: sum
+		sourceColumn: FactTargetRateSK
+
+		annotation SummarizationSetBy = Automatic
+
+	column EventTypeID
+		dataType: int64
+		formatString: 0
+		lineageTag: ef7c813e-6b5e-4d71-8549-fff9e3112e14
+		summarizeBy: count
+		sourceColumn: EventTypeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Level1CatID
+		dataType: int64
+		formatString: 0
+		lineageTag: 97fd4375-ec01-4a8b-9b2a-5e4fdcfe22e3
+		summarizeBy: count
+		sourceColumn: Level1CatID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactTargetRate = m
+		mode: import
+		queryGroup: Facts
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("zdRdb8IgFAbgv3LSS+MiYD/Wy8Y4dYvZR0124bzA9WwSKzSILvv3o6jbrhQzo0vKoZCmffoGGI+Dx87LihAWd6G7RmmCZuB6qFADJeQOZnppJxu23Wz7XSO0ZS+apqkdtO0da7HNICTEVhYnttKU2poVBRZA4xwrRhiB6ScMxRzhiS+qUshg0jyKUr+ypwwMDDyJ95nxUm09iass8VTl/ZNGQ6OIuO+HbkRcUidz1Lk8qKUwYo0wkAZ1/aRQ8sK2fDW96ihpNH81StcT3oHFTrFdUb9FYVZpUVoTq023aiahz5clfihV+CfG9iQ24uUccv6GB5HXLLI1cbz4vMghL9APGTpk+2JJ9jSiPKjcyGgSuQV5/ij9lNQpHfIoo+cZ94f9sm8TH+Q1/tUG/glrlJ3m9I03FCf5hiT39p+mqHeSrOALeLYrFnUwmXwB", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Event Type" = _t, #"Target type" = _t, HoursType = _t, Level = _t, #"Level 1 Categorisation" = _t, #"Level 2 Categorisation" = _t, #"Level 3 Categorisation" = _t, #"Start date" = _t, #"End date" = _t, #"Green min" = _t, #"Amber max" = _t, #"Red max" = _t, Documentation = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Event Type", type text}, {"Target type", type text}, {"Level", type text}, {"Level 1 Categorisation", type text}, {"Level 2 Categorisation", type text}, {"Level 3 Categorisation", type text}, {"Start date", type date}, {"End date", type date}, {"Green min", Int64.Type}, {"Amber max", Int64.Type}, {"Red max", Int64.Type}, {"Documentation", type text}, {"HoursType", type text}}),
+				    #"Added Index" = Table.AddIndexColumn(#"Changed Type", "FactTargetRateSK", 1, 1, Int64.Type),
+				    #"Get DimEventType" = Table.NestedJoin(#"Added Index", {"Event Type"}, #"DimEventType", {"EventTypeDescription"}, "DimEventType", JoinKind.LeftOuter),
+				    #"Expanded DimEventType" = Table.ExpandTableColumn(#"Get DimEventType", "DimEventType", {"EventTypeID"}, {"EventTypeID"}),
+				    GetDimLevel1 = Table.NestedJoin(#"Expanded DimEventType", {"Level 1 Categorisation"}, #"DimLevel1Categorisation", {"Level 1 Categorisation"}, "DimLevel1", JoinKind.LeftOuter),
+				    #"Expanded Stage - Level1" = Table.ExpandTableColumn(GetDimLevel1, "DimLevel1", {"Level1CatID"}, {"Level1CatID"}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Expanded Stage - Level1",{"Event Type", "Target type", "HoursType", "Level", "Level 1 Categorisation", "Level 2 Categorisation", "Level 3 Categorisation", "Start date", "End date", "Green min", "Amber max", "Red max", "Documentation", "FactTargetRateSK", "EventTypeID", "Level1CatID"})
+				in
+				    #"Reordered Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

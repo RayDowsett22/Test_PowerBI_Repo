@@ -1,0 +1,52 @@
+table DimLevel2Categorisation
+	lineageTag: 190d9f01-faeb-482f-9efc-1e34bb5fb334
+
+	column Level2CatID
+		dataType: int64
+		formatString: 0
+		lineageTag: 6626a962-5cb4-45a6-ace3-e6565d7a92b6
+		summarizeBy: none
+		sourceColumn: Level2CatID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Level 2 Categorisation'
+		dataType: string
+		lineageTag: bb1c246a-8190-41fb-90b8-5f3c33849f38
+		summarizeBy: none
+		sourceColumn: Level 2 Categorisation
+
+		annotation SummarizationSetBy = Automatic
+
+	column InsertAuditID
+		dataType: int64
+		formatString: 0
+		lineageTag: 44640530-bef0-4379-9378-dc915e8133fb
+		summarizeBy: none
+		sourceColumn: InsertAuditID
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpdateAuditID
+		dataType: int64
+		formatString: 0
+		lineageTag: 786c84b3-1dbf-4228-9fa0-7a1b8d5238ba
+		summarizeBy: none
+		sourceColumn: UpdateAuditID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimLevel2Categorisation = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				    Source = Sql.Database(Instances, "JNBDW"),
+				    dbo_DimLevel2Categorisation = Source{[Schema="dbo",Item="DimLevel2Categorisation"]}[Data]
+				in
+				    dbo_DimLevel2Categorisation
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

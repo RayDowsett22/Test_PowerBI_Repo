@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Timesheet Register v2.0.0"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "7d4ccc57-fa99-4942-9ae9-ca3d742dd673"
+  }
+}

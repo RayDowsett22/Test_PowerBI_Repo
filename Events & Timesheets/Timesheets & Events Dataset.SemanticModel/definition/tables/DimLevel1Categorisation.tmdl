@@ -1,0 +1,52 @@
+table DimLevel1Categorisation
+	lineageTag: f2e0c5c5-0db8-480b-b6ad-087565e3ab58
+
+	column Level1CatID
+		dataType: int64
+		formatString: 0
+		lineageTag: ad51cc69-07e4-46d2-9214-67934642756e
+		summarizeBy: none
+		sourceColumn: Level1CatID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Level 1 Categorisation'
+		dataType: string
+		lineageTag: 46c6ca4f-605a-4a17-901e-a8bb76aae8d8
+		summarizeBy: none
+		sourceColumn: Level 1 Categorisation
+
+		annotation SummarizationSetBy = Automatic
+
+	column InsertAuditID
+		dataType: int64
+		formatString: 0
+		lineageTag: 2c202b89-aa94-4999-9715-48fddd11b7f7
+		summarizeBy: none
+		sourceColumn: InsertAuditID
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpdateAuditID
+		dataType: int64
+		formatString: 0
+		lineageTag: 14c3ca0f-676d-46c5-aa20-e68da3a7314f
+		summarizeBy: none
+		sourceColumn: UpdateAuditID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimLevel1Categorisation = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				    Source = Sql.Database(Instances, "JNBDW"),
+				    dbo_DimLevel1Categorisation = Source{[Schema="dbo",Item="DimLevel1Categorisation"]}[Data]
+				in
+				    dbo_DimLevel1Categorisation
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+

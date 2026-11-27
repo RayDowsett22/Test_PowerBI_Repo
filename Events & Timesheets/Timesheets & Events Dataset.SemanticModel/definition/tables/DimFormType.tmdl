@@ -1,0 +1,53 @@
+table DimFormType
+	lineageTag: 0e00e6a0-0500-46b7-b38d-dc095f393e46
+
+	column FormTypeID
+		dataType: int64
+		formatString: 0
+		lineageTag: 87246276-4c4a-4277-86b1-ab48ba21eda1
+		summarizeBy: none
+		sourceColumn: FormTypeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column FormType
+		dataType: string
+		lineageTag: 94ed084d-83bb-47eb-9714-9f3759124c4a
+		summarizeBy: none
+		sourceColumn: FormType
+
+		annotation SummarizationSetBy = Automatic
+
+	column InsertAuditID
+		dataType: int64
+		formatString: 0
+		lineageTag: 9d60e57c-3928-4374-b3b5-060fcad0e82a
+		summarizeBy: none
+		sourceColumn: InsertAuditID
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpdateAuditID
+		dataType: int64
+		formatString: 0
+		lineageTag: 1bbed5db-7f8c-4d4f-a519-78a00f50f28e
+		summarizeBy: none
+		sourceColumn: UpdateAuditID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimFormType = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				    Source = Sql.Database(Instances, "JNBDW"),
+				    dbo_DimFormType = Source{[Schema="dbo",Item="DimFormType"]}[Data],
+				    #"Replaced Value" = Table.ReplaceValue(dbo_DimFormType,"External (e.g. Public)","External",Replacer.ReplaceText,{"FormType"})
+				in
+				    #"Replaced Value"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

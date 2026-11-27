@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "9a284146220c5ace282d",
+  "position": {
+    "x": 847.85568344700175,
+    "y": 71.185729275970616,
+    "z": 5000,
+    "height": 85.96012591815321,
+    "width": 424.42812172088145,
+    "tabOrder": 21000
+  },
+  "visualGroup": {
+    "displayName": "Drillthroughs",
+    "groupMode": "ScaleMode"
+  }
+}

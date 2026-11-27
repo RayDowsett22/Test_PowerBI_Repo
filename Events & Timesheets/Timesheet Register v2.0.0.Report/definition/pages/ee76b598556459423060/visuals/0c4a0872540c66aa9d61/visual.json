@@ -1,0 +1,451 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "0c4a0872540c66aa9d61",
+  "position": {
+    "x": 250.94224924012158,
+    "y": 72.948328267477208,
+    "z": 4000,
+    "height": 254.83282674772039,
+    "width": 777.14285714285722,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BIAbout vw_Info"
+                        }
+                      },
+                      "Property": "ElementName"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(BIAbout vw_Info.ElementName)",
+              "nativeQueryRef": "Name",
+              "displayName": "Name"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BIAbout vw_Info"
+                        }
+                      },
+                      "Property": "ElementDescription"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(BIAbout vw_Info.ElementDescription)",
+              "nativeQueryRef": "Description",
+              "displayName": "Description"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BIAbout vw_Info"
+                        }
+                      },
+                      "Property": "CurrentVersion"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(BIAbout vw_Info.CurrentVersion)",
+              "nativeQueryRef": "Current Version",
+              "displayName": "Current Version"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BIAbout vw_Info"
+                        }
+                      },
+                      "Property": "ISCDescription"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(BIAbout vw_Info.ISCDescription)",
+              "nativeQueryRef": "ISC Description",
+              "displayName": "ISC Description"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BIAbout vw_Info"
+                        }
+                      },
+                      "Property": "GoliveDate"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(BIAbout vw_Info.GoliveDate)",
+              "nativeQueryRef": "Deployment Date",
+              "displayName": "Deployment Date"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BIAbout vw_Info"
+                        }
+                      },
+                      "Property": "LatestUpdateDescription"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(BIAbout vw_Info.LatestUpdateDescription)",
+              "nativeQueryRef": "Latest Update Description",
+              "displayName": "Latest Update Description"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "BIAbout vw_Info"
+                        }
+                      },
+                      "Property": "ShortName"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(BIAbout vw_Info.ShortName)",
+              "nativeQueryRef": "Stakeholder",
+              "displayName": "Stakeholder"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "valuesOnRow": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "backColorSecondary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F2F2F1'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#bbc8e3'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "outlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#bbc8e3'"
+                    }
+                  }
+                }
+              }
+            },
+            "rowPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "525.6714089771126D"
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "240.47195574261914D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Min(BIAbout vw_Info.ElementName)"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'About Matrix'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "e6dde4fbb02b4e4d77c8",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "BIAbout vw_Info"
+                  }
+                },
+                "Property": "ElementName"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced",
+        "isHiddenInViewMode": true
+      },
+      {
+        "name": "cce961ea5e4004ce8aad",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "BIAbout vw_Info"
+                  }
+                },
+                "Property": "ElementDescription"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced",
+        "isHiddenInViewMode": true
+      },
+      {
+        "name": "42c720a03da0e54b807d",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "BIAbout vw_Info"
+                  }
+                },
+                "Property": "CurrentVersion"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced",
+        "isHiddenInViewMode": true
+      },
+      {
+        "name": "b977492a0805deb1e87a",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "BIAbout vw_Info"
+                  }
+                },
+                "Property": "ISCDescription"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced",
+        "isHiddenInViewMode": true
+      },
+      {
+        "name": "791864601853b670a01b",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "BIAbout vw_Info"
+                  }
+                },
+                "Property": "GoliveDate"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced",
+        "isHiddenInViewMode": true
+      },
+      {
+        "name": "82c61cf3c108e5203599",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "BIAbout vw_Info"
+                  }
+                },
+                "Property": "LatestUpdateDescription"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced",
+        "isHiddenInViewMode": true
+      },
+      {
+        "name": "4da638ce5b646e406ca7",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "BIAbout vw_Info"
+                  }
+                },
+                "Property": "ShortName"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced",
+        "isHiddenInViewMode": true
+      }
+    ]
+  }
+}

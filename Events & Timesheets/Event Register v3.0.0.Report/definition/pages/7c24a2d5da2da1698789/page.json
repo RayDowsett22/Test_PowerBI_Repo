@@ -1,0 +1,50 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "7c24a2d5da2da1698789",
+  "displayName": "Closed % by person graph",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "7fdfbdb3590cd01ece59",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "POS - Unpivot"
+              }
+            },
+            "Property": "Role"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "b71d5078a5109cb890ca",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "78e9f6383a3083450a44",
+        "boundFilter": "7fdfbdb3590cd01ece59",
+        "asAggregation": false,
+        "qnaSingleSelectRequired": false,
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "POS - Unpivot"
+              }
+            },
+            "Property": "Role"
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode"
+}

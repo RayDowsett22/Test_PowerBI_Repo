@@ -1,0 +1,76 @@
+model Model
+	culture: en-GB
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-GB
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup Dimensions
+
+	annotation PBI_QueryGroupOrder = 1
+
+queryGroup Facts
+
+	annotation PBI_QueryGroupOrder = 2
+
+queryGroup 'Report Info'
+
+	annotation PBI_QueryGroupOrder = 0
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["Instances","BIAbout vw_Info","BIAbout vw_VersionHistory","DimActivity","DimActivityType","DimDate","DimDesignation","DimEntityType","DimEventStatus","DimEventType","DimFormType","DimLevel1Categorisation","DimLevel2Categorisation","DimLevel3Categorisation","DimLevel4Categorisation","DimLocation","DimReportedBy","DimSource","HoursHelp","POS","POS - Unpivot","RAGOrder","EmployeeProjectCosts","FactEventActionResponse","FactEventActionResponseCarbonSummary","FactEventRegister","FactTargetPercent","FactTargetRate","FactTimeSheetHours","XpedeonWritebackEventActions"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table 'BIAbout vw_Info'
+ref table DateTableTemplate_082d8f35-34b8-487d-9862-62b9c4aa5bc3
+ref table LocalDateTable_499b292d-e969-4379-8379-4d357a4ff425
+ref table 'BIAbout vw_VersionHistory'
+ref table LocalDateTable_3c10842f-2fbe-49bf-9877-e346a76dd99e
+ref table POS
+ref table DimReportedBy
+ref table LocalDateTable_67380841-aa52-4eab-9823-a7ed7953536c
+ref table LocalDateTable_7a0eeb92-7fe8-46fb-a1db-793e0b57eeb2
+ref table LocalDateTable_5248de6f-bcab-4312-b5f6-bf3163b9dd8d
+ref table LocalDateTable_f94b5150-334f-4593-9a86-6d386cbe6ee8
+ref table LocalDateTable_5a0b6630-3729-4f66-bb24-dd670f7061c2
+ref table DimEntityType
+ref table DimDate
+ref table LocalDateTable_b4ad4756-8ace-4530-a9bb-e8598c376afe
+ref table LocalDateTable_280a74bc-c3ee-4bc8-a7ef-d05d832adeb0
+ref table FactTimeSheetHours
+ref table LocalDateTable_e182b04e-de0f-4418-8bde-af252323610b
+ref table DimActivity
+ref table DimActivityType
+ref table DimDesignation
+ref table EmployeeProjectCosts
+ref table HoursHelp
+ref table FactEventRegister
+ref table DimFormType
+ref table DimLevel1Categorisation
+ref table DimLevel2Categorisation
+ref table DimLevel3Categorisation
+ref table DimLevel4Categorisation
+ref table DimSource
+ref table DimEventStatus
+ref table DimEventType
+ref table FactEventActionResponse
+ref table LocalDateTable_bc1e6893-cf1f-49da-a722-088c72eb8959
+ref table LocalDateTable_1c67fc7a-49f1-43d5-ba8d-c1656241d087
+ref table 'POS - Unpivot'
+ref table FactTargetRate
+ref table LocalDateTable_d8a307f2-bc18-4bbf-9f76-3a892811e0ef
+ref table LocalDateTable_1591b55a-4ff7-478d-b955-a32f0160b82d
+ref table FactEventActionResponseCarbonSummary
+ref table FactTargetPercent
+ref table LocalDateTable_ca3925fe-44a9-421e-93f5-22a8664cda74
+ref table LocalDateTable_486fa0bf-d839-4b77-bea8-e367f7bb0162
+ref table RAGOrder
+ref table DimLocation
+ref table XpedeonWritebackEventActions
+
+ref cultureInfo en-GB
+

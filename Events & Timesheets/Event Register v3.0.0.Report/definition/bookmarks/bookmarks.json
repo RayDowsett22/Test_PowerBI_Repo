@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmarksMetadata/1.0.0/schema.json",
+  "items": [
+    {
+      "name": "ed9db5ad60b7c6871ab6",
+      "displayName": "Events by Categorisation",
+      "children": [
+        "acb3c6d0a3cac28801ca",
+        "49a41be478847c637db1",
+        "716ebdbf10406565000b"
+      ]
+    },
+    {
+      "name": "bce75629e41170370c65"
+    },
+    {
+      "name": "37de886e3e5096805dd4"
+    },
+    {
+      "name": "c3af39c382c31a535477"
+    },
+    {
+      "name": "1301d6a6d62558935d3a"
+    },
+    {
+      "name": "38823dc9790939371398"
+    },
+    {
+      "name": "60570e220a0b05b397d8"
+    },
+    {
+      "name": "4976886d99d43ad44a0a"
+    },
+    {
+      "name": "91c8b8c556663d7dca17"
+    },
+    {
+      "name": "b61cc10c45c6c03de9b7"
+    },
+    {
+      "name": "a128da961ea54bc35802"
+    },
+    {
+      "name": "0b61434bcc904e2a7372"
+    },
+    {
+      "name": "e4e7392dea0d60916c18"
+    },
+    {
+      "name": "5bf4cd9cc47eb36c18aa"
+    },
+    {
+      "name": "381bf2990370e0d83637"
+    }
+  ]
+}

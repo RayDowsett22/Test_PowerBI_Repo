@@ -1,0 +1,8 @@
+expression Instances = "jnbsql03.jnbentley.co.uk" meta [IsParameterQuery=true, List={"jnbsql03.jnbentley.co.uk", "jnbskvrepo001.jnbentley.co.uk"}, DefaultValue="jnbsql03.jnbentley.co.uk", Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 7a7fbec0-3b16-4f0d-8397-43feb9b4f508
+	queryGroup: 'Report Info'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+

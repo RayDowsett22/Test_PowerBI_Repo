@@ -1,0 +1,50 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "5a150a0ecad32ae08750",
+  "displayName": "Closed % by project graph",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "b974f5fcb3492c0c38aa",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "POS"
+              }
+            },
+            "Property": "Project Full"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "015e6a61c5bdceb10e15",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "15c8ed4076336e0bd0b0",
+        "boundFilter": "b974f5fcb3492c0c38aa",
+        "asAggregation": false,
+        "qnaSingleSelectRequired": false,
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "POS"
+              }
+            },
+            "Property": "Project Full"
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode"
+}

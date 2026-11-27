@@ -1,0 +1,96 @@
+table DimDesignation
+	lineageTag: 1be502c4-a4b4-4983-bd0e-c3b241e3ecdf
+
+	column DesignationID
+		dataType: int64
+		formatString: 0
+		lineageTag: 92376910-28f2-46c8-84ce-946ead4ed420
+		summarizeBy: none
+		sourceColumn: DesignationID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DesignationCode
+		dataType: string
+		lineageTag: 00397384-8ba7-483d-a688-949a404ab0b0
+		summarizeBy: none
+		sourceColumn: DesignationCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column DesignationDescription
+		dataType: string
+		lineageTag: ac3894c1-c426-49ab-94b1-57cd0bee865d
+		summarizeBy: none
+		sourceColumn: DesignationDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column InsertAuditID
+		dataType: int64
+		formatString: 0
+		lineageTag: 90f66895-3332-421e-bcb1-090223ec160b
+		summarizeBy: none
+		sourceColumn: InsertAuditID
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpdateAuditID
+		dataType: int64
+		formatString: 0
+		lineageTag: 82d17b83-4746-486a-bb36-368fb3466f8f
+		summarizeBy: none
+		sourceColumn: UpdateAuditID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Support
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ce4033cc-1224-4f42-895a-31367b11f580
+		summarizeBy: none
+		sourceColumn: Support
+
+		annotation SummarizationSetBy = Automatic
+
+	column Operation
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 45be4ad6-77b9-4197-8d2c-7c755c228e82
+		summarizeBy: none
+		sourceColumn: Operation
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExpGroupID
+		dataType: int64
+		formatString: 0
+		lineageTag: 447d094c-1c21-49e7-aa44-ca9785d234d3
+		summarizeBy: none
+		sourceColumn: ExpGroupID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Design
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 624c9448-84b2-4f9f-b633-40f7b0bdf7f5
+		summarizeBy: none
+		sourceColumn: Design
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimDesignation = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				    Source = Sql.Database(Instances, "JNBDW"),
+				    dbo_DimDesignation = Source{[Schema="dbo",Item="DimDesignation"]}[Data]
+				in
+				    dbo_DimDesignation
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

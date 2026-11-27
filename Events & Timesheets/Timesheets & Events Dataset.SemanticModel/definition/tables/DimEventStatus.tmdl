@@ -1,0 +1,52 @@
+table DimEventStatus
+	lineageTag: ea4614b9-fd4f-4f63-9ec1-de8488ab6651
+
+	column EventStatusID
+		dataType: int64
+		formatString: 0
+		lineageTag: 24e481fd-790c-43c6-9f57-76a64993d5af
+		summarizeBy: none
+		sourceColumn: EventStatusID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: e642f30c-47a5-4591-9b9e-1f768ddcc902
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column InsertAuditID
+		dataType: int64
+		formatString: 0
+		lineageTag: 9cebd4f8-a0aa-43fb-9e06-6768b894f120
+		summarizeBy: none
+		sourceColumn: InsertAuditID
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpdateAuditID
+		dataType: int64
+		formatString: 0
+		lineageTag: 73e495da-f085-4489-9ece-9ead9fe2712d
+		summarizeBy: none
+		sourceColumn: UpdateAuditID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimEventStatus = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				    Source = Sql.Database(Instances, "JNBDW"),
+				    dbo_DimEventStatus = Source{[Schema="dbo",Item="DimEventStatus"]}[Data]
+				in
+				    dbo_DimEventStatus
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

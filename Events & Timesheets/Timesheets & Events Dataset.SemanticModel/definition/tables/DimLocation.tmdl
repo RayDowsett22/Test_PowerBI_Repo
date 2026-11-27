@@ -1,0 +1,34 @@
+table DimLocation
+	lineageTag: 3647408b-1812-4d1e-b7c9-413be0544d6e
+
+	column EmploymentGUID
+		dataType: double
+		lineageTag: 2ce9f65c-66d5-4649-b02d-59adc3c3de80
+		summarizeBy: none
+		sourceColumn: EmploymentGUID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Location
+		dataType: string
+		lineageTag: e79de6a8-1295-47a0-a95f-a829cf466aa1
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimLocation = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				    Source = Sql.Database(Instances, "ExternalData", [Query="-- Retrieve each employee's location#(lf)SELECT [EMPLOYMENT_ID] [EmploymentGUID]#(lf)      ,[VALUE] [Location]#(lf)FROM [ExternalData].[XPEDEON].[HRP_EMPLOYEE_ATTRIBUTES] #(lf)-- Filter to the Location attribute#(lf)WHERE [EMP_ATTRIB_CODE] = 'LOC'"])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
